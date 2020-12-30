@@ -15,6 +15,20 @@ export class PokemonPageComponent implements OnInit {
   constructor(private ps:PokemonService) { }
 
   ngOnInit(): void {
+    
   }
+
+  getPoke():void{
+    this.ps.getPokemonFromApi(this.input).subscribe(
+      (data:Pokemon)=>{ //Assuming that the data returned from getPokemonFromApi will be a pokemon object
+        this.pokemon=data;
+      },
+      ()=>{
+        this.pokemon=null;
+        console.log("Something went wrong trying to catch your pokemon.");
+      }
+    )
+  }
+
 
 }

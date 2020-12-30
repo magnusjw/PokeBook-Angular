@@ -11,6 +11,6 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   userLogIn(user:string, pass:string):Observable<User>{
-    return this.http.get("taco") as Observable<User>
+    return this.http.get("http://3.19.211.125:8080/PokeBook/login") as Observable<User>
   }
 }

@@ -10,7 +10,7 @@ import { UserComponent } from './components/user/user.component';
 import { PokemonPageComponent } from './components/pokemon-page/pokemon-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PoketypePipe } from './pipes/poketype.pipe';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -28,8 +28,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClient
-  ],
+    HttpClientModule
+  ], //roam
   providers: [],
   bootstrap: [AppComponent]
 })
