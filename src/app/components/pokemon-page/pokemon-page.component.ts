@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon';
-import { PokemonServiceService } from 'src/app/services/pokemon-service.service';
+import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-page',
@@ -12,7 +12,7 @@ export class PokemonPageComponent implements OnInit {
   public pokemon:Pokemon = null;
   public input:number = 0;
 
-  constructor(private ps:PokemonServiceService) { }
+  constructor(private ps:PokemonService) { }
 
   ngOnInit(): void {
   }

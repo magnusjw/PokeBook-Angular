@@ -8,6 +8,10 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { PokemonPageComponent } from './components/pokemon-page/pokemon-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PoketypePipe } from './pipes/poketype.pipe';
+import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,11 +20,15 @@ import { PokemonPageComponent } from './components/pokemon-page/pokemon-page.com
     LoginComponent,
     RegisterComponent,
     UserComponent,
-    PokemonPageComponent
+    PokemonPageComponent,
+    PoketypePipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    HttpClient
   ],
   providers: [],
   bootstrap: [AppComponent]
