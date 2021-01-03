@@ -6,15 +6,33 @@ import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService {
+export class AccountService { //Linked to the UserController in Java
 
   constructor(private http:HttpClient) { }
 
-  logIn(user:string, pass:string):Observable<User>{ // Retrieve user from database
-    return this.http.get<User>("http://3.19.211.125:8080/PokeBook/users") as Observable<User>
+  getUsers(){
+    return this.http.get<User[]>("http://localhost:8080/PokeBook/users");
   }
 
-  addUser(user:User){
-    return this.http.
+  getUser(id:number){
+    return this.http.get<User>("http://localhost:8080/PokeBook/users/" + id); //Path Param
+  }
+
+  createUser(user:User){
+    return this.http.post("http://localhost:8080/PokeBook/users", user);
+  }
+
+  updateUser(user:User){  
+    return this.http.put("http://localhost:8080/PokeBook/users", user);
+  }
+
+
+  //Login & logout Functionality not tested
+  logIn(user:User):Observable<Boolean>{
+    return this.http.get<Boolean>("http://localhost:8080/PokeBook/login") as Observable<Boolean>;
+  }
+
+  logout():Observable<Boolean>{
+    return this.http.get<Boolean>("http://localhost:8080/PokeBook/logout") as Observable<Boolean>;
   }
 }
