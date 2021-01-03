@@ -7,6 +7,7 @@ import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   { path:'', component:LoginComponent },
+  { path:'login', component:LoginComponent },
   { path:'register', component:RegisterComponent },
   { path:'user', component:UserComponent },
   { path:'pokemon', component:PokemonPageComponent }
