@@ -28,8 +28,8 @@ export class AccountService { //Linked to the UserController in Java
 
 
   //Login & logout Functionality not tested
-  logIn(user:User):Observable<Boolean>{
-    return this.http.get<Boolean>("http://localhost:8080/PokeBook/login") as Observable<Boolean>;
+  logIn(user:User):Observable<User>{
+    return this.http.get<User>("http://localhost:8080/PokeBook/login") as Observable<User>;
   }
 
   logout():Observable<Boolean>{

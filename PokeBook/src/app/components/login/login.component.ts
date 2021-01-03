@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
-import { LoginService } from 'src/app/services/login.service';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-login',
@@ -9,24 +9,27 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  public username:string;
-  public password:string;
+  username:string;
+  password:string;
 
-  public user:User;
+  loginSuccess:boolean = false;
 
-  constructor(private ls:LoginService) { }
+  currUser:User;
+
+  constructor(private as:AccountService) { }
 
   ngOnInit(): void {
   }
 
-  login():void{
-    this.ls.userLogIn(this.username, this.password).subscribe(
-      (data:User)=>{
-        this.user=data;
+  login(){
+    let u = new User(0, this.username, this.password, "", "", "")
+    this.as.logIn(u).subscribe(
+      (response:User)=>{
+        this.loginSuccess = true;
+        this.currUser = response;
       },
       ()=>{
-        this.user=null;
-        console.log("Something went wrong trying to catch your user.");
+        this.currUser=null;
       }
     )
     

@@ -1,5 +1,3 @@
-import { timeStamp } from "console";
-
 export class User {
 
     public id:number;

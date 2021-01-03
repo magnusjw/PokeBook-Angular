@@ -22,8 +22,7 @@ export class RegisterComponent implements OnInit {
   
   constructor(private as: AccountService) { }
 
-  ngOnInit(): void {
-    this.getUsers();
+  ngOnInit(){
   }
 
   getUsers() {
@@ -34,13 +33,13 @@ export class RegisterComponent implements OnInit {
     )
   }
 
-// id:number, username:string, password:string, firstName:string, lastName:string, email:string
 
-  register():void{
+  register(){
     let u = new User(0, this.username, this.password, this.firstname, this.lastname, this.email);
     this.as.createUser(u).subscribe(
-      //If there's a void response, then nothing is done here
-    )
+
+      
+    );
   }
 
 
