@@ -12,5 +12,11 @@
         <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="pokemon">Pokemon</a>
         </li>
+        <li>
+            <input type="number" [(ngModel)]="input"/>
+        </li>
+        <li>
+            <button class="btn btn-primary" (click)="search()">Favorite Pokemon</button>
+        </li>
     </ul>
 </nav>

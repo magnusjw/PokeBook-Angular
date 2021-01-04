@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -9,17 +10,24 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonPageComponent implements OnInit {
 
-  public pokemon:Pokemon = null;
-  public input:number = 0;
+  pokemon:Pokemon = null;
+  input:number = 0;
 
-  constructor(private ps:PokemonService) { }
+  constructor(
+    private ps:PokemonService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
-  ngOnInit(): void {
-    
+  ngOnInit(){
+    this.activatedRoute.queryParams.subscribe(params => {
+      const input = params['input'];
+      console.log(input);
+    });
+
   }
 
-  getPoke():void{
-    this.ps.getPokemonFromApi(this.input).subscribe(
+  getPoke(input:number):void{
+    this.ps.getPokemonFromApi(input).subscribe(
       (data:Pokemon)=>{ //Assuming that the data returned from getPokemonFromApi will be a pokemon object
         this.pokemon=data;
       },

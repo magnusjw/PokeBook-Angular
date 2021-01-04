@@ -15,9 +15,10 @@ export class RegisterComponent implements OnInit {
   lastname: string;
   email: string;
 
-
   userId: number;
   users: User[];
+
+  route:string;
 
   
   constructor(private as: AccountService) { }
@@ -33,13 +34,8 @@ export class RegisterComponent implements OnInit {
     )
   }
 
-
   register(){
     let u = new User(0, this.username, this.password, this.firstname, this.lastname, this.email);
-    this.as.createUser(u).subscribe(
-
-    );
+    this.as.createUser(u).subscribe();
   }
-
-
 }

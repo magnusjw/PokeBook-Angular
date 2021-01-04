@@ -22,7 +22,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    let u = new User(0, this.username, this.password, "", "", "")
+    let u:User;
+    u.username = this.username;
+    u.password = this.password;
     this.as.logIn(u).subscribe(
       (response:User)=>{
         this.loginSuccess = true;
@@ -32,7 +34,5 @@ export class LoginComponent implements OnInit {
         this.currUser=null;
       }
     )
-    
   }
-
 }
