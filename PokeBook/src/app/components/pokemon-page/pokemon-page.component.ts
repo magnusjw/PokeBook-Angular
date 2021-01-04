@@ -20,9 +20,9 @@ export class PokemonPageComponent implements OnInit {
 
   ngOnInit(){
 
-    //this.input = Number(this.activatedRoute.snapshot.paramMap.get("input"));
+    //this.input = Number(this.activatedRoute.snapshot.paramMap.get("input")); Snapshots are Deprecated
 
-    this.activatedRoute.paramMap.subscribe(params => { 
+    this.activatedRoute.paramMap.subscribe(params => {
       console.log(params);
        this.input = Number(params.get('id'));  
    });

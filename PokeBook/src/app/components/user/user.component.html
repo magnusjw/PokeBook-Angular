@@ -1,1 +1,24 @@
-<p>user works!</p>
+<h1>Welcome to PokeBook</h1>
+<br><br>
+
+<h2>LiveFeed</h2>
+<br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Author</th>
+            <th scope="col">PokemonId</th>
+            <th scope="col">Content</th>
+            <th scope="col">TimeStamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of messages">
+            <td>{{m.author}}</td>
+            <td>{{m.pokemonId}}</td>
+            <td>{{m.content}}</td>
+            <td>{{m.timeStamp}}</td>
+        </tr>
+    </tbody>
+</table>

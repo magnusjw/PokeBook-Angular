@@ -7,13 +7,13 @@ export class Message {
     public pokemonId:number;
     public authorId:number;
     public content:string;
-    public timestamp:Date; // Questionable datatype
+    public timeStamp:Date; // Questionable datatype
 
-    constructor(id:number, pokemonId:number, authorId:number, content:string, timestamp:Date) {
+    constructor(id:number, pokemonId:number, authorId:number, content:string, timeStamp:Date) {
         this.id = id;
         this.pokemonId = pokemonId;
         this.authorId = authorId;
         this.content = content;
-        this.timestamp = timestamp;
+        this.timeStamp = timeStamp;
     }
 }
