@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -16,17 +16,18 @@ export class NavBarComponent implements OnInit {
 
   constructor(
     private ps:PokemonService,
-    private router: Router
+    private router: Router,
+    private activatedRouter: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
   }
 
   search(){
-    console.log(1);
+      console.log(1);
      this.router.navigate(["../pokemon", this.input]);
+     console.log(this.input);
      console.log(2);
 
   }
-
 }

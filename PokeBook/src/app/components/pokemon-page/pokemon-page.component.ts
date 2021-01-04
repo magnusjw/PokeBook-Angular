@@ -19,10 +19,16 @@ export class PokemonPageComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    this.activatedRoute.queryParams.subscribe(params => {
-      const input = params['input'];
-      console.log(input);
-    });
+
+    //this.input = Number(this.activatedRoute.snapshot.paramMap.get("input"));
+
+    this.activatedRoute.paramMap.subscribe(params => { 
+      console.log(params);
+       this.input = Number(params.get('id'));  
+   });
+
+    console.log("ngOnInit1: " + this.input);
+    this.getPoke(this.input);
 
   }
 

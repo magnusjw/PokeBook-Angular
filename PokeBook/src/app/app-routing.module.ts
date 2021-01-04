@@ -10,7 +10,7 @@ const routes: Routes = [
   { path:'login', component:LoginComponent },
   { path:'register', component:RegisterComponent },
   { path:'user', component:UserComponent },
-  { path:'pokemon', component:PokemonPageComponent }
+  { path:'pokemon/:id', component:PokemonPageComponent }
 ];
 
 @NgModule({
