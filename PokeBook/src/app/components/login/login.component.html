@@ -2,17 +2,15 @@
     <h1>USER SIGN IN</h1>
 </div>
 
-
 <div class="container login">
 
     <div class="row" id="login-row">
 
         <label for="username" class="col-sm-1"></label>
-        <input id="username" type="text" class="col-sm-12 form-control" placeholder="Enter Username"> 
+        <input name="username" type="text" [(ngModel)]="username" class="col-sm-12 form-control" placeholder="Enter Username" required> 
 
         <label for="password" class="col-sm-1"></label>
-        <input id="password" type="password" class="col-sm-12 form-control" placeholder="Enter Password"> 
-
+        <input name="password" type="password" [(ngModel)]="password" class="col-sm-12 form-control" placeholder="Enter Password" required> 
         
         <br/><br/>
         <button class="d-flex justify-content-center btn btn-dark" (click)="login()">Log In</button>

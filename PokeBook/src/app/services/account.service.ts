@@ -32,7 +32,8 @@ export class AccountService { //Linked to the UserController in Java
 
   //Login & logout
   logIn(user:User):Observable<User>{
-    return this.http.get<User>("http://localhost:8080/PokeBook/users/login") as Observable<User>;
+    console.log("login method")
+    return this.http.put("http://localhost:8080/PokeBook/users", user) as Observable<User>;
   }
 
   logout():Observable<Boolean>{

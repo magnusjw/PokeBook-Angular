@@ -22,11 +22,12 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    let u:User;
-    u.username = this.username;
-    u.password = this.password;
+    let u:User = new User(0, this.username, this.password, "fir", "las", "ema");
+    console.log(u);
+
     this.as.logIn(u).subscribe(
       (response:User)=>{
+        console.log(response);
         this.loginSuccess = true;
         this.currUser = response;
       },
@@ -34,5 +35,6 @@ export class LoginComponent implements OnInit {
         this.currUser=null;
       }
     )
+    console.log("End of Login Method");
   }
 }
