@@ -15,8 +15,8 @@ export class PokemonService {
     return this.http.get("http://pokeapi.co/api/v2/pokemon/" + id + "/") as Observable<Pokemon>;
   }
 
-  getMessagesByPokeId(id:number):Observable<Message>{
-    return this.http.get("http://localhost:8080/PokeBook/pokemon") as Observable<Message>; //Have MessageController Getmapping 
+  getMessagesByPokeId(id:number):Observable<Message[]>{
+    return this.http.get<Message[]>("http://localhost:8080/PokeBook/pokemon") as Observable<Message[]>; //Have MessageController Getmapping 
   }
 
 }

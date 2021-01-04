@@ -12,6 +12,7 @@ import { PoketypePipe } from './pipes/poketype.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
     RegisterComponent,
     UserComponent,
     PokemonPageComponent,
-    PoketypePipe
+    PoketypePipe,
+    DiscussionBoardComponent
   ],
   imports: [
     BrowserModule,

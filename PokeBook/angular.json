@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "PokeBook"
+  "defaultProject": "PokeBook",
+  "cli": {
+    "analytics": "67169bc7-c1c9-4881-85de-c469438f8805"
+  }
 }
