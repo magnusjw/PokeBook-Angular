@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { DiscussionBoardComponent } from './discussion-board/discussion-board.co
     UserComponent,
     PokemonPageComponent,
     PoketypePipe,
-    DiscussionBoardComponent
+    DiscussionBoardComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
