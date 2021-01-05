@@ -18,7 +18,7 @@ export class AccountService { //Linked to the UserController in Java
   }
 
   getUser(id:number){
-    return this.http.get<User>("http://localhost:8080/PokeBook/users/" + id); //Path Param
+    return this.http.get<User>("http://localhost:8080/PokeBook/users/" + id, { withCredentials : true }); //Path Param
   }
 
   createUser(user:User){
@@ -26,7 +26,7 @@ export class AccountService { //Linked to the UserController in Java
   }
 
   updateUser(user:User){  
-    return this.http.put("http://localhost:8080/PokeBook/users", user);
+    return this.http.put("http://localhost:8080/PokeBook/users", user, { withCredentials : true });
   }
 
 

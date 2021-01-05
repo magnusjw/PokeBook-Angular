@@ -1,16 +1,16 @@
-import { SelectorContext } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from 'src/app/services/account.service'
-import { User } from 'src/app/models/user'
+import { User } from 'src/app/models/user';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
-  selector: 'app-edit-user',
-  templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.css']
+  selector: 'app-view-user',
+  templateUrl: './view-user.component.html',
+  styleUrls: ['./view-user.component.css']
 })
-export class EditUserComponent implements OnInit 
+export class ViewUserComponent implements OnInit 
 {
   public loggedInUser : User;
+
   constructor(private as: AccountService) 
   {
     this.loggedInUser = new User(0, "Loading...", "Loading...", "Loading...", "Loading...", "Loading...");
@@ -28,11 +28,4 @@ export class EditUserComponent implements OnInit
     });
   }
 
-  public updateUser(): void
-  {
-    this.as.updateUser(this.loggedInUser).subscribe((response:User) => 
-    {
-      console.log("Updated user");
-    });
-  }
 }
