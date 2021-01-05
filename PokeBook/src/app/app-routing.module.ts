@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PokemonPageComponent } from './components/pokemon-page/pokemon-page.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
 
 const routes: Routes = [
@@ -11,6 +12,8 @@ const routes: Routes = [
   { path:'login', component:LoginComponent },
   { path:'register', component:RegisterComponent },
   { path:'user', component:UserComponent },
+  { path:'editUser', component:EditUserComponent },
+  { path:'pokemon/:id', component:PokemonPageComponent },
   { path:'pokemon/:id', component:PokemonPageComponent },
   { path: 'discussion/:id', component:DiscussionBoardComponent}
 ];
