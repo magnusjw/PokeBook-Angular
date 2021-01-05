@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Follow } from 'src/app/models/follow';
 import { Message } from 'src/app/models/message';
 import { Pokemon } from 'src/app/models/pokemon';
 import { User } from 'src/app/models/user';
@@ -16,9 +15,10 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonPageComponent implements OnInit {
 
-  pokemon:Pokemon = null; //2x
+  pokemon:Object = null; //2x
   pokeInput:any; //2x
-  public loggedInUser : User;
+  loggedInUser: User;
+
   isFollowed:boolean = false;
 
   pokemonId:number; //Get this regardless of string or number input to get messages
@@ -35,70 +35,62 @@ export class PokemonPageComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-    //Get Current User
-    this.as.getLoggedInUser().subscribe((result: User) => 
-    {
-      this.loggedInUser= result;
-    });
 
-    //Confirm if this page is being followed by this user
-    let follow:Follow = new Follow(0, this.loggedInUser, this.pokemonId); //Not tested
-    this.fs.getFollow(follow);
+    //this.pokeId = Number(this.activatedRoute.snapshot.paramMap.get("pokeId")); Snapshots are Deprecated
 
-    //Get param to load the specific page
     this.activatedRoute.paramMap.subscribe(params => {
-      console.log(params);
+      //console.log(params);
        this.pokeInput = Number(params.get('search'));
    });
 
-    //Render PokemonAPI Information
-    console.log("ngOnInit1: " + typeof(this.pokeInput) + " " + this.pokeInput);
+    //console.log("ngOnInit1: " + typeof(this.pokeInput) + " " + this.pokeInput);
+    
     this.getPoke(this.pokeInput);
-
-    //Render Discussion Board Information
-  
   }
 
   createMessage() {
     let now = new Date();
-    
-    let message = new Message(0, this.pokemonId, this.loggedInUser, this.content, now);
+    let message = new Message(0, 25, this.loggedInUser, this.content, now);
 
-    this.ms.createMessage(message);
-    this.getDiscussionMessages(this.pokemonId);
+    this.ms.createMessage(message).subscribe(() => { });
+    this.getDiscussionMessages(this.pokemon["id"]);
   }
 
   getDiscussionMessages(pokeInput:number){
     this.ps.getMessagesByPokeId(pokeInput).subscribe(
       (response: Message[]) => {
         this.messages = response;
+        console.log(new Date(response[0]["messagePostTime"]));
       }
     )
   }
 
+
   getPoke(pokeInput):void{
     this.ps.getPokemonFromApi(pokeInput).subscribe(
-      (data:Pokemon)=>{ //Assuming that the data returned from getPokemonFromApi will be a pokemon object
+      (data:Object)=>{ //Assuming that the data returned from getPokemonFromApi will be a pokemon object
         this.pokemon=data;
+        this.getDiscussionMessages(this.pokemon["id"]);
       },
       ()=>{
         this.pokemon=null;
         console.log("Something went wrong trying to catch your pokemon.");
       }
     )
+    this.as.getLoggedInUser().subscribe((result: User) => 
+    {
+      this.loggedInUser = result;
+    });
   }
 
   follow(){
     this.isFollowed = true;
     console.log("follow Button: " + this.isFollowed);
-    //this.fs.createFollow();
-    
 
   }
 
   unfollow(){
     this.isFollowed = false;
     console.log("Unfollow Button: " + this.isFollowed);
-    //this.fs.deleteFollow();
   }
 }

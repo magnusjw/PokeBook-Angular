@@ -11,14 +11,14 @@ export class PokemonService {
 
   constructor(private http:HttpClient) { }
 
-  getPokemonFromApi(input):Observable<Pokemon>{
-    return this.http.get("http://pokeapi.co/api/v2/pokemon/" + input + "/") as Observable<Pokemon>;
+  getPokemonFromApi(input):Observable<Object>{
+    return this.http.get("http://pokeapi.co/api/v2/pokemon/" + input + "/") as Observable<Object>;
   }
 
 
 
   getMessagesByPokeId(id:number):Observable<Message[]>{
-    return this.http.get<Message[]>("http://localhost:8080/PokeBook/messages") as Observable<Message[]>; //Have MessageController Getmapping 
+    return this.http.get<Message[]>("http://localhost:8080/PokeBook/messages/?pokemon_id=" + id) as Observable<Message[]>; //Have MessageController Getmapping 
   }
 
 }
