@@ -11,10 +11,11 @@ import { PokemonService } from '../services/pokemon.service';
 })
 export class DiscussionBoardComponent implements OnInit {
 
+  content: any;
   pokemon:Pokemon = null;
   input:number = 0;
   messages:Message[];
-  s
+  
   constructor(
     private ps:PokemonService,
     private activatedRoute: ActivatedRoute

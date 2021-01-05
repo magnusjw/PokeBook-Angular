@@ -18,9 +18,9 @@ export class EditUserComponent implements OnInit
 
   ngOnInit(): void 
   {
-    this.as.getUser(0).subscribe((result: User) => 
+    this.as.getLoggedInUser().subscribe((result: User) => 
     {
-      this.loggedInUser.username = result.firstName;
+      this.loggedInUser.username = result.username;
       this.loggedInUser.password = result.password;
       this.loggedInUser.firstName = result.firstName;
       this.loggedInUser.lastName = result.lastName;
@@ -28,5 +28,11 @@ export class EditUserComponent implements OnInit
     });
   }
 
-
+  public updateUser(): void
+  {
+    this.as.updateUser(this.loggedInUser).subscribe((response:User) => 
+    {
+      console.log("Updated user");
+    });
+  }
 }
