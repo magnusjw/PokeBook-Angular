@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Follow } from 'src/app/models/follow';
 import { Message } from 'src/app/models/message';
 import { Pokemon } from 'src/app/models/pokemon';
 import { User } from 'src/app/models/user';
@@ -34,24 +35,28 @@ export class PokemonPageComponent implements OnInit {
   ) { }
 
   ngOnInit(){
-
+    //Get Current User
+    this.as.getLoggedInUser().subscribe((result: User) => 
     {
-      this.as.getLoggedInUser().subscribe((result: User) => 
-      {
-        this.loggedInUser= result;
- 
-      });
-    }
+      this.loggedInUser= result;
+    });
 
+    //Confirm if this page is being followed by this user
+    let follow:Follow = new Follow(0, this.loggedInUser, this.pokemonId); //Not tested
+    this.fs.getFollow(follow);
 
+    //Get param to load the specific page
     this.activatedRoute.paramMap.subscribe(params => {
       console.log(params);
        this.pokeInput = Number(params.get('search'));
    });
 
+    //Render PokemonAPI Information
     console.log("ngOnInit1: " + typeof(this.pokeInput) + " " + this.pokeInput);
-    
     this.getPoke(this.pokeInput);
+
+    //Render Discussion Board Information
+  
   }
 
   createMessage() {
@@ -71,7 +76,6 @@ export class PokemonPageComponent implements OnInit {
     )
   }
 
-
   getPoke(pokeInput):void{
     this.ps.getPokemonFromApi(pokeInput).subscribe(
       (data:Pokemon)=>{ //Assuming that the data returned from getPokemonFromApi will be a pokemon object
@@ -87,13 +91,14 @@ export class PokemonPageComponent implements OnInit {
   follow(){
     this.isFollowed = true;
     console.log("follow Button: " + this.isFollowed);
+    //this.fs.createFollow();
+    
 
   }
 
   unfollow(){
     this.isFollowed = false;
     console.log("Unfollow Button: " + this.isFollowed);
+    //this.fs.deleteFollow();
   }
-
-
 }
