@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ViewUserComponent } from './components/view-user/view-user.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     PokemonPageComponent,
     PoketypePipe,
     DiscussionBoardComponent,
-    EditUserComponent
+    EditUserComponent,
+    ViewUserComponent
   ],
   imports: [
     BrowserModule,

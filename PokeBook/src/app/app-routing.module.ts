@@ -5,6 +5,7 @@ import { PokemonPageComponent } from './components/pokemon-page/pokemon-page.com
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ViewUserComponent } from './components/view-user/view-user.component';
 import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path:'register', component:RegisterComponent },
   { path:'user', component:UserComponent },
   { path:'editUser', component:EditUserComponent },
+  { path:'viewUser', component:ViewUserComponent },
   { path:'pokemon/:id', component:PokemonPageComponent },
   { path:'pokemon/:id', component:PokemonPageComponent },
   { path: 'discussion/:id', component:DiscussionBoardComponent}
