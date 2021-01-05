@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Follow } from 'src/app/models/follow';
 import { Message } from 'src/app/models/message';
@@ -16,8 +16,9 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonPageComponent implements OnInit {
 
-  pokemon:Pokemon = null; //2x
-  pokeInput:any; //2x
+  pokemon:Pokemon = null;
+  pokeInput:any;
+
   public loggedInUser : User;
   isFollowed:boolean = false;
 
@@ -38,21 +39,23 @@ export class PokemonPageComponent implements OnInit {
     //Get Current User
     this.as.getLoggedInUser().subscribe((result: User) => 
     {
+      console.log(result);
       this.loggedInUser= result;
-    });
 
-    //Confirm if this page is being followed by this user
-    let follow:Follow = new Follow(0, this.loggedInUser, this.pokemonId); //Not tested
-    this.fs.getFollow(follow);
+      //Confirm if this page is being followed by this user
+      let f:Follow = new Follow(0, result, this.pokeInput);
+      console.log("Follows that Im getting: " + f.user.id);
+      this.fs.getFollow(f).subscribe(() => {});
+
+      console.log("Followed: " + this.isFollowed);
+    });
 
     //Get param to load the specific page
     this.activatedRoute.paramMap.subscribe(params => {
-      console.log(params);
        this.pokeInput = Number(params.get('search'));
    });
 
     //Render PokemonAPI Information
-    console.log("ngOnInit1: " + typeof(this.pokeInput) + " " + this.pokeInput);
     this.getPoke(this.pokeInput);
 
     //Render Discussion Board Information
@@ -89,16 +92,16 @@ export class PokemonPageComponent implements OnInit {
   }
 
   follow(){
-    this.isFollowed = true;
     console.log("follow Button: " + this.isFollowed);
-    //this.fs.createFollow();
-    
-
+    let f:Follow = new Follow(0, this.loggedInUser, this.pokemonId);
+    this.fs.createFollow(f).subscribe(() => {});
+    this.isFollowed = true;
   }
 
   unfollow(){
-    this.isFollowed = false;
     console.log("Unfollow Button: " + this.isFollowed);
-    //this.fs.deleteFollow();
+    let f:Follow = new Follow(0, this.loggedInUser, this.pokemonId);
+    this.fs.deleteFollow(f).subscribe(() => {});
+    this.isFollowed = false;
   }
 }

@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Follow } from '../models/follow';
-import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ export class FollowService {
   constructor(private http:HttpClient) { }
 
   getFollow(f:Follow){
-    return this.http.get<Follow>("http://localhost:8080/PokeBook/follows", f) as Observable<Follow>;
+    return this.http.patch<Follow>("http://localhost:8080/PokeBook/follows", f) as Observable<Follow>;
   }
 
   createFollow(f:Follow){
@@ -20,6 +19,6 @@ export class FollowService {
   }
 
   deleteFollow(f:Follow){
-    return this.http.delete<Follow>("http://localhost:8080/PokeBook/follows", f);
+    return this.http.delete<Follow>("http://localhost:8080/PokeBook/follows/" + f);
   }
 }
