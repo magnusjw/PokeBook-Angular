@@ -20,5 +20,7 @@ export class FollowService {
 
   deleteFollow(f:Follow){
     return this.http.delete<Follow>("http://localhost:8080/PokeBook/follows/" + f);
+
+
   }
 }

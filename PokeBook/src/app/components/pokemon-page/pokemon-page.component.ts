@@ -16,10 +16,9 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonPageComponent implements OnInit {
 
-  pokemon:Pokemon = null;
-  pokeInput:any;
-
-  public loggedInUser : User;
+  pokemon:Object = null; //2x
+  pokeInput:any; //2x
+  loggedInUser: User;
   isFollowed:boolean = false;
 
   pokemonId:number; //Get this regardless of string or number input to get messages
@@ -50,45 +49,47 @@ export class PokemonPageComponent implements OnInit {
       console.log("Followed: " + this.isFollowed);
     });
 
-    //Get param to load the specific page
     this.activatedRoute.paramMap.subscribe(params => {
+
        this.pokeInput = Number(params.get('search'));
    });
 
     //Render PokemonAPI Information
-    this.getPoke(this.pokeInput);
 
-    //Render Discussion Board Information
-  
+    this.getPoke(this.pokeInput);
   }
 
   createMessage() {
     let now = new Date();
-    
-    let message = new Message(0, this.pokemonId, this.loggedInUser, this.content, now);
-
-    this.ms.createMessage(message);
-    this.getDiscussionMessages(this.pokemonId);
+    let message = new Message(0, 25, this.loggedInUser, this.content, now);
+    this.ms.createMessage(message).subscribe(() => { });
+    this.getDiscussionMessages(this.pokemon["id"]);
   }
 
   getDiscussionMessages(pokeInput:number){
     this.ps.getMessagesByPokeId(pokeInput).subscribe(
       (response: Message[]) => {
         this.messages = response;
+        console.log(new Date(response[0]["messagePostTime"]));
       }
     )
   }
 
   getPoke(pokeInput):void{
     this.ps.getPokemonFromApi(pokeInput).subscribe(
-      (data:Pokemon)=>{ //Assuming that the data returned from getPokemonFromApi will be a pokemon object
+      (data:Object)=>{ //Assuming that the data returned from getPokemonFromApi will be a pokemon object
         this.pokemon=data;
+        this.getDiscussionMessages(this.pokemon["id"]);
       },
       ()=>{
         this.pokemon=null;
         console.log("Something went wrong trying to catch your pokemon.");
       }
     )
+    this.as.getLoggedInUser().subscribe((result: User) => 
+    {
+      this.loggedInUser = result;
+    });
   }
 
   follow(){
