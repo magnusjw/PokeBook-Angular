@@ -24,13 +24,8 @@ import { ViewUserComponent } from './components/view-user/view-user.component';
     UserComponent,
     PokemonPageComponent,
     PoketypePipe,
-<<<<<<< HEAD
-    DiscussionBoardComponent,
     EditUserComponent,
     ViewUserComponent
-=======
-    EditUserComponent
->>>>>>> 19b9b77dfe87c38eca072f397be2ae061fe7cd56
   ],
   imports: [
     BrowserModule,

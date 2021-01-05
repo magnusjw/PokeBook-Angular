@@ -6,7 +6,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
-import { DiscussionBoardComponent } from './discussion-board/discussion-board.component';
 
 const routes: Routes = [
   { path:'', component:LoginComponent },
@@ -17,7 +16,6 @@ const routes: Routes = [
   { path:'editUser', component:EditUserComponent },
   { path:'viewUser', component:ViewUserComponent },
   { path:'pokemon/:id', component:PokemonPageComponent },
-  { path: 'discussion/:id', component:DiscussionBoardComponent},
   //View User Path
   { path:'editUser', component:EditUserComponent }
 
