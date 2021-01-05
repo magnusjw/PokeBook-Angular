@@ -3,6 +3,7 @@
     constructor(
         public name:string,
         public types:object[],
-        public sprites:object) {}
+        public sprites:object
+        public pokemonId: number) {}
 
 }
