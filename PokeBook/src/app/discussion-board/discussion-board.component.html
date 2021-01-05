@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let m of messages">
-            <td>{{m.author}}</td>
+            <td>{{m.author.username}}</td>
             <td>{{m.pokemonId}}</td>
             <td>{{m.content}}</td>
             <td>{{m.timeStamp}}</td>
@@ -18,6 +18,6 @@
     </tbody>
 </table>
 
-<input name = "message" type="text" [(ngModel)] = "content" placeholder="Enter Email">
+<input name = "message" type="text" [(ngModel)] = "input" placeholder="Enter Email">
 
 <button name = "messageButton" routerLink="../discussion" click = messagePost()></button>

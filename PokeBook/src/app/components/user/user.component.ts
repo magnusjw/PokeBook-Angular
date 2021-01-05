@@ -16,12 +16,14 @@ export class UserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getLiveFeed();
   }
 
   getLiveFeed(){
-    this.as.getMessagesById(0/* Current User Id Here */).subscribe(
+    this.as.getMessagesById(2).subscribe( 
       (response: Message[]) => {
         this.messages = response;
+
       }
     )
   }

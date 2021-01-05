@@ -4,6 +4,11 @@
 <h2>LiveFeed</h2>
 <br>
 
+<p>Current User Information Up Here</p>
+
+<button name="editProfile" class="btn btn-primary col-sm-3" routerLink="../edit-user">Edit User Profile</button>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -15,7 +20,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let m of messages">
-            <td>{{m.author}}</td>
+            <td>{{m.author.id}}</td>
             <td>{{m.pokemonId}}</td>
             <td>{{m.content}}</td>
             <td>{{m.timeStamp}}</td>
