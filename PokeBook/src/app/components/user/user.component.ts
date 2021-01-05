@@ -10,18 +10,21 @@ import { AccountService } from 'src/app/services/account.service';
 export class UserComponent implements OnInit {
 
   messages:Message[];
+  today = new Date();
 
   constructor(
     private as:AccountService
   ) { }
 
   ngOnInit(): void {
+    this.getLiveFeed();
   }
 
   getLiveFeed(){
-    this.as.getMessagesById(0/* Current User Id Here */).subscribe(
+    this.as.getMessagesById(2).subscribe( 
       (response: Message[]) => {
         this.messages = response;
+
       }
     )
   }

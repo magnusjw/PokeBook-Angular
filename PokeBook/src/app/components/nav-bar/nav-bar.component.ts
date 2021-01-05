@@ -24,11 +24,8 @@ export class NavBarComponent implements OnInit {
   }
 
   search(){
-      console.log(1);
-     this.router.navigate(["../pokemon", this.input]);
-     console.log(this.input);
-     console.log(2);
-
+    this.router.navigate(["../pokemon", this.input]);
+    console.log(this.input);
   }
 
   searchDiscussion(){

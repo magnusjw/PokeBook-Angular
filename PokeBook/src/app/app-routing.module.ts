@@ -12,12 +12,15 @@ const routes: Routes = [
   { path:'', component:LoginComponent },
   { path:'login', component:LoginComponent },
   { path:'register', component:RegisterComponent },
+  { path:'pokemon/:search', component:PokemonPageComponent },
   { path:'user', component:UserComponent },
   { path:'editUser', component:EditUserComponent },
   { path:'viewUser', component:ViewUserComponent },
   { path:'pokemon/:id', component:PokemonPageComponent },
-  { path:'pokemon/:id', component:PokemonPageComponent },
-  { path: 'discussion/:id', component:DiscussionBoardComponent}
+  { path: 'discussion/:id', component:DiscussionBoardComponent},
+  //View User Path
+  { path:'editUser', component:EditUserComponent }
+
 ];
 
 @NgModule({

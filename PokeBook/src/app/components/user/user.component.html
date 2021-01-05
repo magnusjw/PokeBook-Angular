@@ -4,6 +4,7 @@
 <h2>LiveFeed</h2>
 <br>
 
+
 <table class="table">
     <thead>
         <tr>
@@ -15,7 +16,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let m of messages">
-            <td>{{m.author}}</td>
+            <td>{{m.author.id}}</td>
             <td>{{m.pokemonId}}</td>
             <td>{{m.content}}</td>
             <td>{{m.timeStamp}}</td>

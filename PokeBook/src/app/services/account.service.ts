@@ -47,7 +47,7 @@ export class AccountService { //Linked to the UserController in Java
 
   //Live feed
   getMessagesById(id:number):Observable<Message[]>{
-    return this.http.get<Message[]>("http://localhost:8080/PokeBook/users/messages") as Observable<Message[]>;
+    return this.http.get<Message[]>("http://localhost:8080/PokeBook/messages/" + id) as Observable<Message[]>;
   }
 
 

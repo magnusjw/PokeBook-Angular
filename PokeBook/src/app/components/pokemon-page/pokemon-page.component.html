@@ -3,10 +3,12 @@
 
 <!--Dark red: db464d -->
 
+<!--
 <div class="row">
-    <input class="col" type="number" [(ngModel)]="input"/>
+    <input class="col" type="number" [(ngModel)]="pokeId"/>
     <button class="btn btn-primary" (click)="getPoke(input)">Favorite Pokemon</button>
 </div>
+-->
 
 <table class="table" *ngIf="pokemon">
     <thead>
@@ -24,3 +26,27 @@
         </tr>
     </tbody>
 </table>
+
+<table class="table" id="message_board">
+    <thead>
+        <tr>
+            <th scope="col">Author</th>
+            <th scope="col">PokemonId</th>
+            <th scope="col">Content</th>
+            <th scope="col">TimeStamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of messages">
+            <td>{{m.author.username}}</td>
+            <td>{{m.pokemonId}}</td>
+            <td>{{m.content}}</td>
+            <td>{{m.timeStamp}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<input name="message" type="text" [(ngModel)]="content" placeholder="Enter a message to post about this Pokemon"/>
+
+<button name="messageButton" class="btn btn-primary" routerLink="../discussion" (click)="createMessage()">Send Message</button>
+<!-- add new message function instead of getDiscussionMessages?-->
