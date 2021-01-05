@@ -14,7 +14,8 @@ export class DiscussionBoardComponent implements OnInit {
   pokemon:Pokemon = null;
   input:number = 0;
   messages:Message[];
-  s
+  content = "";
+  
   constructor(
     private ps:PokemonService,
     private activatedRoute: ActivatedRoute
