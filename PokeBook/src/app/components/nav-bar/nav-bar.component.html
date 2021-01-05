@@ -18,5 +18,12 @@
         <li>
             <button class="btn btn-primary" [routerLink]="['../pokemon',input]" (click)="search()">Favorite Pokemon</button>
         </li>
+
+        <li>
+            <input type="number" min="0" max="850" [(ngModel)]="input"/>
+        </li>
+        <li>
+            <button class="btn btn-primary" [routerLink]="['../discussion',input]" (click)="searchDiscussion()">Discussion Board</button>
+        </li>
     </ul>
 </nav>

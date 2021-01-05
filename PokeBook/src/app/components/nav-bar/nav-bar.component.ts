@@ -30,4 +30,11 @@ export class NavBarComponent implements OnInit {
      console.log(2);
 
   }
+
+  searchDiscussion(){
+    console.log(1);
+    this.router.navigate(["../discussion", this.input]);
+    console.log(this.input);
+    console.log(2);
+  }
 }
