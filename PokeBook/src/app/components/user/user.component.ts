@@ -10,6 +10,7 @@ import { AccountService } from 'src/app/services/account.service';
 export class UserComponent implements OnInit {
 
   messages:Message[];
+  today = new Date();
 
   constructor(
     private as:AccountService
