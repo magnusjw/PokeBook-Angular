@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Message } from '../models/message';
 import { Pokemon } from '../models/pokemon';
+import { User } from '../models/user';
 import { MessageService } from '../services/message.service';
 import { PokemonService } from '../services/pokemon.service';
 
@@ -34,7 +35,8 @@ export class DiscussionBoardComponent implements OnInit {
 
   createMessage(content) {
     const date = new Date(Date.now());
-    let message = new Message(0, 25, 9, this.content, date);
+    let user = null;
+    let message = new Message(0, 25, user, this.content, date);
     this.ms.createMessage(message);
     this.getDiscussionMessages();
   }
