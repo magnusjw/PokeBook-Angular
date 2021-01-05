@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Message } from 'src/app/models/message';
 import { Pokemon } from 'src/app/models/pokemon';
+import { User } from 'src/app/models/user';
 import { AccountService } from 'src/app/services/account.service';
 import { FollowService } from 'src/app/services/follow.service';
 import { MessageService } from 'src/app/services/message.service';
@@ -16,7 +17,7 @@ export class PokemonPageComponent implements OnInit {
 
   pokemon:Pokemon = null; //2x
   pokeInput:any; //2x
-
+  public loggedInUser : User;
   isFollowed:boolean = false;
 
   pokemonId:number; //Get this regardless of string or number input to get messages
@@ -34,7 +35,14 @@ export class PokemonPageComponent implements OnInit {
 
   ngOnInit(){
 
-    //this.pokeId = Number(this.activatedRoute.snapshot.paramMap.get("pokeId")); Snapshots are Deprecated
+    {
+      this.as.getLoggedInUser().subscribe((result: User) => 
+      {
+        this.loggedInUser= result;
+ 
+      });
+    }
+
 
     this.activatedRoute.paramMap.subscribe(params => {
       console.log(params);
@@ -48,8 +56,8 @@ export class PokemonPageComponent implements OnInit {
 
   createMessage() {
     let now = new Date();
-    let user = null; //Current User
-    let message = new Message(0, 25, user, this.content, now);
+    
+    let message = new Message(0, this.pokemonId, this.loggedInUser, this.content, now);
 
     this.ms.createMessage(message);
     this.getDiscussionMessages(this.pokemonId);
