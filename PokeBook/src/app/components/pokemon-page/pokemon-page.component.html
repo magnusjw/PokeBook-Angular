@@ -10,6 +10,9 @@
 </div>
 -->
 
+<button name="followButton" class="btn btn-success"  [hidden] = 'isFollowed' (click)="follow()">Follow</button>
+<button name="followButton" class="btn btn-danger" [hidden] = '!isFollowed' (click)="unfollow()">Unfollow</button>
+
 <table class="table" *ngIf="pokemon">
     <thead>
         <tr>
@@ -48,5 +51,5 @@
 
 <input name="message" type="text" [(ngModel)]="content" placeholder="Enter a message to post about this Pokemon"/>
 
-<button name="messageButton" class="btn btn-primary" routerLink="../discussion" (click)="createMessage()">Send Message</button>
+<button name="messageButton" class="btn btn-primary" (click)="createMessage()">Send Message</button>
 <!-- add new message function instead of getDiscussionMessages?-->

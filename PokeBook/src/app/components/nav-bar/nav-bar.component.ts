@@ -11,7 +11,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class NavBarComponent implements OnInit {
 
   pokemon:Pokemon = null;
-  input:number = 0;
+  input:any;
   success:boolean = false;
 
   constructor(
@@ -29,9 +29,7 @@ export class NavBarComponent implements OnInit {
   }
 
   searchDiscussion(){
-    console.log(1);
     this.router.navigate(["../discussion", this.input]);
     console.log(this.input);
-    console.log(2);
   }
 }

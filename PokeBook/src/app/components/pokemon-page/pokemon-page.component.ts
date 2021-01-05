@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Message } from 'src/app/models/message';
 import { Pokemon } from 'src/app/models/pokemon';
 import { AccountService } from 'src/app/services/account.service';
+import { FollowService } from 'src/app/services/follow.service';
 import { MessageService } from 'src/app/services/message.service';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -16,6 +17,8 @@ export class PokemonPageComponent implements OnInit {
   pokemon:Pokemon = null; //2x
   pokeInput:any; //2x
 
+  isFollowed:boolean = false;
+
   pokemonId:number; //Get this regardless of string or number input to get messages
 
   messages:Message[];
@@ -25,6 +28,7 @@ export class PokemonPageComponent implements OnInit {
     private as:AccountService,
     private ps:PokemonService,
     private ms:MessageService,
+    private fs:FollowService,
     private activatedRoute: ActivatedRoute
   ) { }
 
@@ -71,4 +75,17 @@ export class PokemonPageComponent implements OnInit {
       }
     )
   }
+
+  follow(){
+    this.isFollowed = true;
+    console.log("follow Button: " + this.isFollowed);
+
+  }
+
+  unfollow(){
+    this.isFollowed = false;
+    console.log("Unfollow Button: " + this.isFollowed);
+  }
+
+
 }

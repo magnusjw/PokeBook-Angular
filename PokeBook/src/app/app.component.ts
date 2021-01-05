@@ -8,5 +8,4 @@ import { User } from './models/user';
 })
 export class AppComponent {
   title = 'PokeBook';
-  currUser:User = null;
 }
