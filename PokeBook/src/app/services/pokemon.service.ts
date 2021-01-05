@@ -16,7 +16,7 @@ export class PokemonService {
   }
 
   getMessagesByPokeId(id:number):Observable<Message[]>{
-    return this.http.get<Message[]>("http://localhost:8080/PokeBook/pokemon") as Observable<Message[]>; //Have MessageController Getmapping 
+    return this.http.get<Message[]>("http://localhost:8080/PokeBook/messages") as Observable<Message[]>; //Have MessageController Getmapping 
   }
 
 }

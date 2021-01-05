@@ -18,6 +18,7 @@
     </tbody>
 </table>
 
-<input name = "message" type="text" [(ngModel)] = "content" placeholder="Enter a message to post about this Pokemon">
+<input name = "message" type="text" [(ngModel)] = "content" placeholder="Enter a message to post about this Pokemon"/>
 
-<button name = "messageButton" class = "btn btn-primary" routerLink="../discussion" click = messagePost()></button>
+<button name = "messageButton" class = "btn btn-primary" routerLink="../discussion" (click) = "createMessage(content)">Post Message</button>
+<!-- add new message function instead of getDiscussionMessages?-->
