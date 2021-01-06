@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from 'src/app/models/user';
 import { AccountService } from 'src/app/services/account.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -9,22 +12,32 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class RegisterComponent implements OnInit {
 
-  username: string;
-  password: string;
-  firstname: string;
-  lastname: string;
-  email: string;
-
   userId: number;
   users: User[];
 
   route:string;
 
-  
-  constructor(private as: AccountService) { }
+  form: FormGroup;
+  submitted:boolean = false;
+
+  constructor(
+    private as: AccountService,
+    private formBuilder: FormBuilder,
+    private router: Router
+    ) { }
 
   ngOnInit(){
+    this.form = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required], // *@*.com
+    })
   }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.form.controls; }
 
   getUsers() {
     this.as.getUsers().subscribe( //Interpret Response object as an array of users, and then assign local variable
@@ -34,10 +47,17 @@ export class RegisterComponent implements OnInit {
     )
   }
 
+
   register(){
-    let u = new User(0, this.username, this.password, this.firstname, this.lastname, this.email);
+    this.submitted=true;
+    let u:User = this.form.value;
+    console.log(u)
     this.as.createUser(u).subscribe(
-      
-    );
+      data => {
+        console.log("Successfully Registered");
+      },
+      error => {
+        console.log("Something went wrong");
+      });
   }
 }

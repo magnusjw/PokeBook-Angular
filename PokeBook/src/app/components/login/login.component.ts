@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   password:string;
 
   loginSuccess:boolean = false;
+  error:boolean = false;
 
   constructor(
     private as:AccountService,
@@ -31,9 +32,11 @@ export class LoginComponent implements OnInit {
       (response:User)=>{
         this.loginSuccess = true;
         console.log("Login Successful!")
+
         this.router.navigate(["../user"]);
       },
       ()=>{
+        this.error = true;
         console.log("Login Failed!")
       }
     )

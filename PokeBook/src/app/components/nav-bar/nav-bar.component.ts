@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { AccountService } from 'src/app/services/account.service';
-import { PokemonPageComponent } from '../pokemon-page/pokemon-page.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -24,7 +22,10 @@ export class NavBarComponent implements OnInit {
 
   search(){
     this.router.navigate(['../pokemon', this.input]);
-    //this.poke.ngOnInit;
-    console.log("Search() called with " + this.input);
+  }
+
+  clear(){
+    console.log("clearing");
+    document.getElementById("input").innerHTML ="15";
   }
 }

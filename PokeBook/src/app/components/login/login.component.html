@@ -16,5 +16,7 @@
         <button class="d-flex justify-content-center btn btn-dark" (click)="login()">Log In</button>
         <a routerLink="../register" class="btn btn-link">Register</a>
 
+        <span *ngIf="error" style="color:red">Incorrect login. Please try again</span>
+
     </div>
 </div>
