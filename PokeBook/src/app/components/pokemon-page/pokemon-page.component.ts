@@ -15,10 +15,11 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonPageComponent implements OnInit {
 
+  //Api Supports 898 Pokemon
   pokemon:Object = null;
   pokeInput:any;
   loggedInUser: User;
-  isFollowed:boolean = false;
+  isFollowed:boolean;
   currFollow:Follow;
 
   messages:Message[];
@@ -48,12 +49,19 @@ export class PokemonPageComponent implements OnInit {
 
       this.fs.getFollow(f).subscribe((result: Follow) => {
         this.currFollow = result;
+        console.log(result);
         if(result == null){
-          this.isFollowed == false;
+          this.isFollowed = false;
+          console.log(this.isFollowed)
         } else {
-          this.isFollowed == true;
+          this.isFollowed = true;
+          console.log(this.isFollowed)
         }
       });
+    });
+
+    this.ps.getMessagesByPokeId(0).subscribe((response: Message[]) => {
+
     });
 
     //Render PokemonAPI Information
@@ -62,16 +70,19 @@ export class PokemonPageComponent implements OnInit {
 
   createMessage() {
     let now = new Date();
-    let message = new Message(0, 25, this.loggedInUser, this.content, now);
+    let message = new Message(0, this.pokemon["id"], this.loggedInUser, this.content, now);
     this.ms.createMessage(message).subscribe(() => { });
     this.getDiscussionMessages(this.pokemon["id"]);
+    this.ngOnInit();
   }
 
   getDiscussionMessages(pokeInput:number){
     this.ps.getMessagesByPokeId(pokeInput).subscribe(
       (response: Message[]) => {
+        for(let i=0; i<response.length; i++){
+          response[i].timeStamp = new Date(response[i]["messagePostTime"]);
+        }
         this.messages = response;
-        //console.log(new Date(response[0]["messagePostTime"]));
       }
     )
   }
@@ -91,6 +102,12 @@ export class PokemonPageComponent implements OnInit {
     {
       this.loggedInUser = result;
     });
+  }
+
+  formatDate(date)
+  {
+    const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return `${ months[date.getMonth()] }. ${ date.getDate() } ${ date.getFullYear() } ${ date.getHours() }:${ date.getMinutes() }`;
   }
 
   follow(){

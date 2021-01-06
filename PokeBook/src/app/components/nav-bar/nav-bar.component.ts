@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
+import { AccountService } from 'src/app/services/account.service';
+import { PokemonPageComponent } from '../pokemon-page/pokemon-page.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,23 +13,19 @@ export class NavBarComponent implements OnInit {
 
   input:any;
   success:boolean = false;
+  loggedInUser:User = null;
 
   constructor(
-
     private router: Router,
-    private activatedRouter: ActivatedRoute
+    private poke:PokemonPageComponent
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
   }
 
   search(){
-    this.router.navigate(["../pokemon", this.input]);
-    console.log(this.input);
-  }
-
-  searchDiscussion(){
-    this.router.navigate(["../discussion", this.input]);
-    console.log(this.input);
+    this.router.navigate(['../pokemon', this.input]);
+    //this.poke.ngOnInit;
+    console.log("Search() called with " + this.input);
   }
 }

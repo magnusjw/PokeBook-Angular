@@ -15,8 +15,6 @@ const routes: Routes = [
   { path:'user', component:UserComponent },
   { path:'editUser', component:EditUserComponent },
   { path:'viewUser', component:ViewUserComponent },
-  { path:'pokemon/:id', component:PokemonPageComponent },
-  //View User Path
   { path:'editUser', component:EditUserComponent }
 
 ];
