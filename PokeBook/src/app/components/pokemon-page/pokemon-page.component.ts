@@ -68,7 +68,7 @@ export class PokemonPageComponent implements OnInit {
   }
 
   getDiscussionMessages(pokeInput:number){
-    this.ps.getMessagesByPokeId(pokeInput).subscribe(
+    this.ms.getMessagesByPokeId(pokeInput).subscribe(
       (response: Message[]) => {
         this.messages = response;
         //console.log(new Date(response[0]["messagePostTime"]));

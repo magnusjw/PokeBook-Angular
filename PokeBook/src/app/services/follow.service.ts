@@ -13,6 +13,10 @@ export class FollowService {
   getFollow(f:Follow){
     return this.http.patch<Follow>("http://localhost:8080/PokeBook/follows", f) as Observable<Follow>;
   }
+  
+  getFollowsByUserId(id:number):Observable<Follow[]>{
+    return this.http.get<Follow[]>("http://localhost:8080/PokeBook/follows/?user_id=" + id) as Observable<Follow[]>; //Have MessageController Getmapping 
+  }
 
   createFollow(f:Follow):Observable<Follow>{
     return this.http.post<Follow>("http://localhost:8080/PokeBook/follows", f) as Observable<Follow>;
