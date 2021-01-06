@@ -1,0 +1,64 @@
+.poke-background 
+{
+    background-image: url("../../../assets/tiled-pokeball-background.png");
+    /*background-color: #cccccc;*/
+    background-repeat: repeat;
+    background-size: 200px 200px;
+}
+
+h1
+{
+    color : white;
+    margin-left: auto;
+    margin-top: auto;
+    text-align: center;
+}
+
+p
+{
+    color : #FFFFFF;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    opacity: 85%;
+}
+
+a
+{
+    color : #FFFFFF;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    opacity: 85%;
+}
+
+input
+{
+    border-radius: 50px;
+    height: 50px;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 22pt;
+    color: #888888;
+    opacity: 85%;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #000000;
+    opacity: 30%;
+  }
+
+button
+{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50px;
+    border-width: 5px;
+    border-color: #FFFFFF;
+    background-color: #FFFFFF;
+    opacity: 90%;
+    color: #AA0044;
+    font-size: 24pt;
+}

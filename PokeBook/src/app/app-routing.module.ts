@@ -12,14 +12,17 @@ const routes: Routes = [
   { path:'', component:LoginComponent },
   { path:'login', component:LoginComponent },
   { path:'register', component:RegisterComponent },
+
   { path:'pokemon/:search', component:PokemonPageComponent },
+  
   { path:'user', component:UserComponent },
   { path:'editUser', component:EditUserComponent },
   { path:'viewUser', component:ViewUserComponent },
   { path:'pokemon/:id', component:PokemonPageComponent },
   //View User Path
   { path:'editUser', component:EditUserComponent },
-  { path:'userFeed', component:UserFeedComponent }
+  { path:'userFeed', component:UserFeedComponent },
+  { path:'viewUser', component:ViewUserComponent }
 
 ];
 

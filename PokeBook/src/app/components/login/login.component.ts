@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -14,27 +15,27 @@ export class LoginComponent implements OnInit {
 
   loginSuccess:boolean = false;
 
-  currUser:User;
-
-  constructor(private as:AccountService) { }
+  constructor(
+    private as:AccountService,
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
   }
 
   login(){
-    let u:User = new User(0, this.username, this.password, "fir", "las", "ema");
-    console.log(u);
+
+    let u:User = new User(0, this.username, this.password, "", "", "");
 
     this.as.logIn(u).subscribe(
       (response:User)=>{
-        console.log(response);
         this.loginSuccess = true;
-        this.currUser = response;
+        console.log("Login Successful!")
+        this.router.navigate(["../user"]);
       },
       ()=>{
-        this.currUser=null;
+        console.log("Login Failed!")
       }
     )
-    console.log("End of Login Method");
   }
 }

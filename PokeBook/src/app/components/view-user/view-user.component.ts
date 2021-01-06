@@ -16,7 +16,7 @@ export class ViewUserComponent implements OnInit
     this.loggedInUser = new User(0, "Loading...", "Loading...", "Loading...", "Loading...", "Loading...");
   }
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
     this.as.getLoggedInUser().subscribe((result: User) => 
     {
