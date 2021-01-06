@@ -1,0 +1,46 @@
+.poke-background 
+{
+    background-image: url("../../../assets/tiled-pokeball-background.png");
+    /*background-color: #cccccc;*/
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    align-content: center;
+}
+
+p
+{
+     color: #888888;
+}
+
+h1
+{
+    color: white;
+    text-align: center;
+}
+
+a
+{
+    font-size: 14pt;
+    color: white;
+}
+
+div
+{
+    text-align: center;
+    font-size: 22pt;
+    color: #DB6066;
+}
+
+.paddedDiv
+{
+    padding: 0 0 20px 0;
+}
+
+img
+{
+    width: 225px; 
+    height: 225px;
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block;
+}

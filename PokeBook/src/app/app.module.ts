@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
+import { UserFeedComponent } from './components/user-feed/user-feed.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ViewUserComponent } from './components/view-user/view-user.component';
     PokemonPageComponent,
     PoketypePipe,
     EditUserComponent,
-    ViewUserComponent
+    ViewUserComponent,
+    UserFeedComponent,
   ],
   imports: [
     BrowserModule,

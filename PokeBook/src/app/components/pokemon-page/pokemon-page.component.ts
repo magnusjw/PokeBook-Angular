@@ -63,7 +63,7 @@ export class PokemonPageComponent implements OnInit {
       });
     });
 
-    this.ps.getMessagesByPokeId(0).subscribe((response: Message[]) => {
+    this.ms.getMessagesByPokeId(0).subscribe((response: Message[]) => {
 
     });
 
@@ -80,7 +80,7 @@ export class PokemonPageComponent implements OnInit {
   }
 
   getDiscussionMessages(pokeInput:number){
-    this.ps.getMessagesByPokeId(pokeInput).subscribe(
+    this.ms.getMessagesByPokeId(pokeInput).subscribe(
       (response: Message[]) => {
         for(let i=0; i<response.length; i++){
           response[i].timeStamp = new Date(response[i]["messagePostTime"]);
