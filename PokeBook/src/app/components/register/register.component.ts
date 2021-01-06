@@ -47,7 +47,6 @@ export class RegisterComponent implements OnInit {
     )
   }
 
-
   register(){
     this.submitted=true;
     let u:User = this.form.value;
