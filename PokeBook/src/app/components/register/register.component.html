@@ -2,28 +2,39 @@
     <h1>USER REGISTRATION</h1>
 </div>
 
-
-<form>
+<!--(ngSubmit)="register()"-->
+<form [formGroup]="form" (ngSubmit)="register()" >
     <div class="container login">
 
         <div class="row" id="login-row">
-            <label class="col-sm-1"></label>
-            <input name="username" type="text" [(ngModel)]="username" class="col-sm-12 form-control" placeholder="Enter Username" required> 
+            <div class="form-group">
+                <!--<label for="username">User Name</label>-->
+                <input type="text" formControlName="username" class="form-control" placeholder="Enter Username"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }"> 
+                <!--<div *ngIf="submitted && f.username.errors.required">User Name is Required</div>-->
+            </div>
+            <div class="form-group">
+                <!--<label for="password">Password</label>-->
+                <input type="text" formControlName="password" class="form-control" placeholder="Enter Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"> 
+                <!--<div *ngIf="submitted && f.password.errors.required">Password is Required</div>-->
+            </div>
+            <div class="form-group">
+                <!--<label for="firstname">First Name</label>-->
+                <input type="text" formControlName="firstName" class="form-control" placeholder="Enter Firstname" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"> 
+                <!--<div *ngIf="submitted && f.firstname.errors.required">First Name is Required</div>-->
+            </div>
+            <div class="form-group">
+                <!--<label for="lastName">Last Name</label>-->
+                <input type="text" formControlName="lastName" class="form-control" placeholder="Enter Lastname" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"> 
+                <!--<div *ngIf="submitted && f.lastName.errors.required">Last Name is Required</div>-->
+            </div>
+            <div class="form-group">
+                <!--<label for="email">Email Name</label>-->
+                <input type="text" formControlName="email" class="form-control" placeholder="Enter Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"> 
+                <!--<div *ngIf="submitted && f.email.errors.required">Email is Required</div>-->
+            </div>
 
-            <label class="col-sm-1"></label>
-            <input name="password" type="password" [(ngModel)]="password" class="col-sm-12 form-control" placeholder="Enter Password" required> 
-
-            <label class="col-sm-1"></label>
-            <input name="firstname" type="text" [(ngModel)]="firstname" class="col-sm-12 form-control" placeholder="Enter First name" required>
-
-            <label class="col-sm-1"></label>
-            <input name="lastname" type="text" [(ngModel)]="lastname" class="col-sm-12 form-control" placeholder="Enter Last Name" required>
-
-            <label class="col-sm-1"></label>
-            <input name="email" type="text" [(ngModel)]="email" class="col-sm-12 form-control" placeholder="Enter Email" required>
-
-
-            <button routerLink="../login" class="d-flex justify-content-center btn btn-dark" (click)="register()">Register</button>
+            <button class="d-flex justify-content-center btn btn-dark">Register</button>
+            <a routerLink="../login" class="btn btn-link">Cancel</a>
         </div>
     </div>
 </form>

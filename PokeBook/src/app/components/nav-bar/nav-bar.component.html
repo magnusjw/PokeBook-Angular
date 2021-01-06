@@ -13,10 +13,10 @@
             <a class="nav-link" routerLinkActive="active" routerLink="pokemon">Pokemon</a>
         </li>
         <li>
-            <input type="text" [(ngModel)]="input"/>
+            <input id="input" #filterName type="text" [(ngModel)]="input"/>
         </li>
         <li>
-            <button class="btn btn-primary" (click)="search()">Search Pokemon</button>
+            <button class="btn btn-primary" (click)="search(); clear()">Search Pokemon</button>
         </li>
     </ul>
 </nav>

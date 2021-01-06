@@ -12,9 +12,7 @@ const routes: Routes = [
   { path:'', component:LoginComponent },
   { path:'login', component:LoginComponent },
   { path:'register', component:RegisterComponent },
-
   { path:'pokemon/:search', component:PokemonPageComponent },
-  
   { path:'user', component:UserComponent },
   { path:'editUser', component:EditUserComponent },
   { path:'viewUser', component:ViewUserComponent },
@@ -23,11 +21,10 @@ const routes: Routes = [
   { path:'editUser', component:EditUserComponent },
   { path:'userFeed', component:UserFeedComponent },
   { path:'viewUser', component:ViewUserComponent }
-
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -68,9 +68,9 @@ export class PokemonPageComponent implements OnInit {
     });
 
     //Render PokemonAPI Information
-    //this.getPoke(this.pokeInput);
+    this.getPoke(this.pokeInput);
   }
-/*
+
   createMessage() {
     let now = new Date();
     let message = new Message(0, this.pokemon["id"], this.loggedInUser, this.content, now);
@@ -133,6 +133,4 @@ export class PokemonPageComponent implements OnInit {
     this.ls.createLike(like).subscribe(() => { });
 
   }
-
-  */
 }
