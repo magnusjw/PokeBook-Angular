@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Follow } from 'src/app/models/follow';
+import { Like } from 'src/app/models/like.model';
 import { Message } from 'src/app/models/message';
 import { User } from 'src/app/models/user';
 import { AccountService } from 'src/app/services/account.service';
 import { FollowService } from 'src/app/services/follow.service';
+import { LikeService } from 'src/app/services/like.service';
 import { MessageService } from 'src/app/services/message.service';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -29,6 +31,7 @@ export class PokemonPageComponent implements OnInit {
     private ps:PokemonService,
     private ms:MessageService,
     private fs:FollowService,
+    private ls:LikeService,
     private activatedRoute: ActivatedRoute
   ) { }
 
@@ -62,7 +65,7 @@ export class PokemonPageComponent implements OnInit {
 
   createMessage() {
     let now = new Date();
-    let message = new Message(0, 25, this.loggedInUser, this.content, now);
+    let message = new Message(0, this.pokemon["id"], this.loggedInUser, this.content, now);
     this.ms.createMessage(message).subscribe(() => { });
     this.getDiscussionMessages(this.pokemon["id"]);
   }
@@ -105,4 +108,15 @@ export class PokemonPageComponent implements OnInit {
     this.fs.deleteFollow(this.currFollow).subscribe(() => {});
     this.isFollowed = false;
   }
+
+  createLike() {
+    let now = new Date();
+    let message = new Message(30, this.pokemon["id"], this.loggedInUser, this.content, now);
+    //hard coding message ID of 30, find out how to get message ID later
+    let like = new Like(0, this.loggedInUser, message);
+    this.ls.createLike(like).subscribe(() => { });
+
+  }
+
+  
 }

@@ -37,6 +37,7 @@
             <th scope="col">PokemonId</th>
             <th scope="col">Content</th>
             <th scope="col">TimeStamp</th>
+            <th scope="col">Like</th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +46,7 @@
             <td>{{m.pokemonId}}</td>
             <td>{{m.content}}</td>
             <td>{{m.timeStamp}}</td>
+            <td> <button  name="likeButton" class = "btn btn-primary" (click) = "createLike()">Like This Message</button></td>
         </tr>
     </tbody>
 </table>
