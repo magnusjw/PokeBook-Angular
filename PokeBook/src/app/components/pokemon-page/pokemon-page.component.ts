@@ -109,11 +109,10 @@ export class PokemonPageComponent implements OnInit {
     this.isFollowed = false;
   }
 
-  createLike() {
+  createLike(m) {
     let now = new Date();
-    let message = new Message(30, this.pokemon["id"], this.loggedInUser, this.content, now);
-    //hard coding message ID of 30, find out how to get message ID later
-    let like = new Like(0, this.loggedInUser, message);
+    console.log(m);
+    let like = new Like(0, this.loggedInUser, m);
     this.ls.createLike(like).subscribe(() => { });
 
   }
