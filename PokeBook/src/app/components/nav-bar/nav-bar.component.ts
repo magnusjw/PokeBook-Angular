@@ -16,8 +16,7 @@ export class NavBarComponent implements OnInit {
   loggedInUser:User = null;
 
   constructor(
-    private router: Router,
-    private poke:PokemonPageComponent
+    private router: Router
   ) { }
 
   ngOnInit(): void{

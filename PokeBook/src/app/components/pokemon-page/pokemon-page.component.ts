@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Follow } from 'src/app/models/follow';
+import { Like } from 'src/app/models/like.model';
 import { Message } from 'src/app/models/message';
 import { User } from 'src/app/models/user';
 import { AccountService } from 'src/app/services/account.service';
 import { FollowService } from 'src/app/services/follow.service';
+import { LikeService } from 'src/app/services/like.service';
 import { MessageService } from 'src/app/services/message.service';
 import { PokemonService } from 'src/app/services/pokemon.service';
 
@@ -30,6 +32,7 @@ export class PokemonPageComponent implements OnInit {
     private ps:PokemonService,
     private ms:MessageService,
     private fs:FollowService,
+    private ls:LikeService,
     private activatedRoute: ActivatedRoute
   ) { }
 
@@ -65,9 +68,9 @@ export class PokemonPageComponent implements OnInit {
     });
 
     //Render PokemonAPI Information
-    this.getPoke(this.pokeInput);
+    //this.getPoke(this.pokeInput);
   }
-
+/*
   createMessage() {
     let now = new Date();
     let message = new Message(0, this.pokemon["id"], this.loggedInUser, this.content, now);
@@ -122,4 +125,14 @@ export class PokemonPageComponent implements OnInit {
     this.fs.deleteFollow(this.currFollow).subscribe(() => {});
     this.isFollowed = false;
   }
+
+  createLike(m) {
+    let now = new Date();
+    console.log(m);
+    let like = new Like(0, this.loggedInUser, m);
+    this.ls.createLike(like).subscribe(() => { });
+
+  }
+
+  */
 }
