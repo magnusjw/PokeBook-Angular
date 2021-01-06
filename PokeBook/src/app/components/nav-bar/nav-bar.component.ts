@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Pokemon } from 'src/app/models/pokemon';
-import { PokemonService } from 'src/app/services/pokemon.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,12 +8,11 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class NavBarComponent implements OnInit {
 
-  pokemon:Pokemon = null;
   input:any;
   success:boolean = false;
 
   constructor(
-    private ps:PokemonService,
+
     private router: Router,
     private activatedRouter: ActivatedRoute
   ) { }

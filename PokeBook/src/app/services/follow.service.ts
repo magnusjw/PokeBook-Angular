@@ -14,13 +14,11 @@ export class FollowService {
     return this.http.patch<Follow>("http://localhost:8080/PokeBook/follows", f) as Observable<Follow>;
   }
 
-  createFollow(f:Follow){
-    return this.http.post("http://localhost:8080/PokeBook/follows", f);
+  createFollow(f:Follow):Observable<Follow>{
+    return this.http.post<Follow>("http://localhost:8080/PokeBook/follows", f) as Observable<Follow>;
   }
 
   deleteFollow(f:Follow){
-    return this.http.delete<Follow>("http://localhost:8080/PokeBook/follows/" + f);
-
-
+    return this.http.delete<Follow>("http://localhost:8080/PokeBook/follows/" + f.id);
   }
 }
