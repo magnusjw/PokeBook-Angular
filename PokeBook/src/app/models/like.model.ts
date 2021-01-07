@@ -11,6 +11,7 @@ export class Like {
         this.id = id;
         this.user = user;
         this.message = message;
+        
     }
 }
 

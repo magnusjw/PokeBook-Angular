@@ -26,6 +26,8 @@ export class PokemonPageComponent implements OnInit {
   messages:Message[];
   content:string;
 
+  likes:Like[];
+
   constructor(
     private as:AccountService,
     private ps:PokemonService,
@@ -57,15 +59,19 @@ export class PokemonPageComponent implements OnInit {
           this.isFollowed == true;
         }
       });
+
+
     });
 
     //Render PokemonAPI Information
     this.getPoke(this.pokeInput);
+
+
   }
 
   createMessage() {
     let now = new Date();
-    let message = new Message(0, this.pokemon["id"], this.loggedInUser, this.content, now);
+    let message = new Message(0, this.pokemon["id"], this.loggedInUser, this.content, now, false);
     this.ms.createMessage(message).subscribe(() => { });
     this.getDiscussionMessages(this.pokemon["id"]);
   }
@@ -74,7 +80,26 @@ export class PokemonPageComponent implements OnInit {
     this.ps.getMessagesByPokeId(pokeInput).subscribe(
       (response: Message[]) => {
         this.messages = response;
-        //console.log(new Date(response[0]["messagePostTime"]));
+        
+        this.ls.getLikes(this.loggedInUser.id).subscribe((result: Like[]) => {
+        
+          this.likes = result;
+          let likesMessageIds: number[] = [];
+          if (this.likes.length>0) {
+            for (let i:number = 0;i<this.likes.length;i++) {
+              likesMessageIds.push(this.likes[i].message.id);
+            }
+          }
+
+          for (let i:number = 0;i<this.messages.length;i++) {
+            let messageId = this.messages[i].id;
+            if (likesMessageIds.includes(messageId)) {
+              this.messages[i].isLiked=true;
+            }
+            
+          }
+          
+        });
       }
     )
   }
@@ -111,11 +136,28 @@ export class PokemonPageComponent implements OnInit {
 
   createLike(m) {
     let now = new Date();
-    console.log(m);
+    m.isLiked = true;
     let like = new Like(0, this.loggedInUser, m);
     this.ls.createLike(like).subscribe(() => { });
 
   }
 
-  
+  deleteLike(m) {
+    let now = new Date();
+    m.isLiked = false;
+    
+    let likeToDelete:Like[];
+    this.ls.getLikes(this.loggedInUser.id).subscribe((result: Like[]) => {
+      likeToDelete = result;
+      console.log(likeToDelete);
+      console.log(m);
+      for (let i:number = 0;i<likeToDelete.length;i++) {
+          if (likeToDelete[i].message.id==m.id) {
+            this.ls.deleteLike(likeToDelete[i]).subscribe(() => { });
+          }
+      }
+    });
+    
+    
+  }
 }
