@@ -43,8 +43,10 @@
         <tr *ngFor="let m of messages">
             <td>{{m.author.username}}</td>
             <td>{{m.content}}</td>
-            <td>{{this.formatDate(m.timeStamp)}}</td>
-            <td> <button  name="likeButton" class = "btn btn-primary" (click) = "createLike(m)">Like This Message</button></td>
+            <td>{{m.timeStamp}}</td>
+            <td> <button name="likeButton" class = "btn btn-primary" [hidden] = 'm.isLiked' (click) = "createLike(m)">Like This Message</button>
+                <button name = "unlikeButton" class = "btn btn-danger" [hidden] = '!m.isLiked' (click) = "deleteLike(m)">Unlike This Message</button>
+                 </td>
         </tr>
     </tbody>
 </table>
