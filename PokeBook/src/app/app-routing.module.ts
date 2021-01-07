@@ -14,9 +14,6 @@ const routes: Routes = [
   { path:'register', component:RegisterComponent },
   { path:'pokemon/:search', component:PokemonPageComponent },
   { path:'user', component:UserComponent },
-  { path:'editUser', component:EditUserComponent },
-  { path:'viewUser', component:ViewUserComponent },
-  { path:'pokemon/:id', component:PokemonPageComponent },
   //View User Path
   { path:'editUser', component:EditUserComponent },
   { path:'userFeed', component:UserFeedComponent },

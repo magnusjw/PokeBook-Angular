@@ -1,25 +1,46 @@
-<p>{{loggedInUser.username}}</p>
-<p>Favorites</p>
-<div *ngFor="let f of favorites">
-    <img [src]="f.src"/>
-    <p>{{f.name}}</p>
+<div class="sidePanel">
+    <!--<img src="../../../assets/rounded-corner.png" style="width: 60%; float: left;"/>-->
+    <div style="margin-left: 20px;">
+        <h1>{{loggedInUser.username}}</h1>
+    </div>
+
+    <img src="../../../assets/account-icon.png" style="width: 100%; padding: 20%; float: left; position: absolute;">
+    <div class="infoContainer">
+        <br/><br/>
+        <ul class="hlist">
+            <li style="padding: 5px;">
+                <img src="../../../assets/favorites-icon.png" style="height: 25px">
+            </li>
+            <li>
+                <h2>Favorites</h2>
+            </li>
+        </ul>
+        <table class="favoritesTable" *ngFor="let f of favorites">
+            <tr>
+                <td style="padding: 5px;">
+                    <img [src]="f.src"/>
+                </td>
+                <td>
+                    <p style="text-align: left;">{{capitalizeFirstLetter(f.name)}}</p>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
 
-<table>
-    <thead>
-        <tr>
-            <th scope="col">Author</th>
-            <th scope="col">PokemonId</th>
-            <th scope="col">Content</th>
-            <th scope="col">TimeStamp</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let m of messages">
-            <td>{{m.author.username}}</td>
-            <td>{{m.pokemonId}}</td>
-            <td>{{m.content}}</td>
-            <td>{{m.timeStamp}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="feed">
+    <div class="messagesTable">
+        <div *ngFor="let m of messages" style="padding: 50px 0px; width: 100%; display:inline-block;">
+            <div class="messageCollumnLeft">
+                <div style="width: 100px; height: 100px; margin: 0px auto; background-image: url('{{msgImage[m.pokemonId]}}'); background-size: 100% 100%; padding: 40px;"></div>
+                <p style="color: #999999; font-size: 14pt; text-align: center;">{{capitalizeFirstLetter(msgPkName[m.pokemonId])}}</p>
+            </div>
+            <div class="messageCollumnRight">
+                <div class="messageContainer">
+                    <p>{{m.content}}</p>
+                    <p style="font-size: 12pt;">{{m["formattedDate"]}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -24,7 +24,7 @@ export class FollowService {
   }
 
   deleteFollow(f:Follow){
-    console.log("Follow Deleted by user " + f.user.id);
-    return this.http.delete<Follow>("http://localhost:8080/PokeBook/follows/" + f.id);
+    console.log("Follow id: " + f.id);
+    return this.http.delete("http://localhost:8080/PokeBook/follows/" + f.id);
   }
 }

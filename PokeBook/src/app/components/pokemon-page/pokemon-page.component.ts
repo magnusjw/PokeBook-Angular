@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Follow } from 'src/app/models/follow';
 import { Like } from 'src/app/models/like.model';
 import { Message } from 'src/app/models/message';
@@ -35,45 +35,47 @@ export class PokemonPageComponent implements OnInit {
     private ms:MessageService,
     private fs:FollowService,
     private ls:LikeService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(){
     //Get the proper Page Values
     this.activatedRoute.paramMap.subscribe(params => {
-      this.pokeInput = Number(params.get('search'));
+      this.pokeInput = params.get('search');
     });
 
     //Get Current User
-    this.as.getLoggedInUser().subscribe((result: User) => 
-    {
-      this.loggedInUser= result;
+    this.as.getLoggedInUser().subscribe((userResult: User) => 
+      {
+        this.loggedInUser= userResult;
 
-      //Confirm if this page is being followed by this user
-      let f:Follow = new Follow(0, result, this.pokeInput);
+        //Confirm if this page is being followed by this user
+        let f:Follow = new Follow(0, this.loggedInUser, this.pokeInput);
 
-      this.fs.getFollow(f).subscribe((result: Follow) => {
-        this.currFollow = result;
-        console.log(result);
-        if(result == null){
-          this.isFollowed = false;
-          console.log(this.isFollowed)
-        } else {
-          this.isFollowed = true;
-          console.log(this.isFollowed)
+        this.fs.getFollow(f).subscribe((result: Follow) => {
+          this.currFollow = result;
+          console.log("Current Follow Object Below");
+          console.log(this.currFollow);
+          if(result == null){
+            this.isFollowed = false;
+            console.log("Page is Not Followed");
+          } else {
+            this.isFollowed = true;
+            console.log("Page is Followed");
+          }
+        },
+        () => {
+          console.log("You're not logged in! Intruder!");
+          this.router.navigate(["../login"]);
         }
-      });
 
-
-    });
-
-    //this.ms.getMessagesByPokeId(0).subscribe((response: Message[]) => {
-
-    //});
+        );
+      },
+    );
 
     //Render PokemonAPI Information
-    this.getPoke(this.pokeInput);
-
+    this.getPoke(this.pokeInput); //Maybe get poke early on to answer the String input problem
 
   }
 
@@ -105,12 +107,11 @@ export class PokemonPageComponent implements OnInit {
 
           for (let i:number = 0;i<this.messages.length;i++) {
             let messageId = this.messages[i].id;
+            this.messages[i]["formattedDate"] = this.formatDate(new Date(this.messages[i]["messagePostTime"]));
             if (likesMessageIds.includes(messageId)) {
               this.messages[i].isLiked=true;
             }
-            
           }
-          
         });
       }
     )
@@ -148,6 +149,8 @@ export class PokemonPageComponent implements OnInit {
   }
 
   unfollow(){
+    console.log("Prior to Deletion")
+    console.log(this.currFollow)
     this.fs.deleteFollow(this.currFollow).subscribe(() => {});
     this.isFollowed = false;
   }
@@ -177,5 +180,12 @@ export class PokemonPageComponent implements OnInit {
     });
     
     
+  }
+  capitalizeFirstLetter(string) : String
+  {
+    if (string && string.charAt(0))
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    else
+      return "";
   }
 }

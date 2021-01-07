@@ -1,0 +1,98 @@
+.sidePanel
+{
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 20%; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 100; /* Stay at the top */
+    left: 0;
+    background-image: url('../../../assets/tiled-pokeball-background.png');
+    background-color: #DB464D; /* Black */
+    background-size: 225px 225px;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+.infoContainer
+{
+    background-color: #EEEEEE; 
+    width: 100%;
+    height: 60%; 
+    margin: 75% 0 0 0;
+    padding: 0 20px 0 0;
+    border-radius: 7%;
+    text-align: center;
+    align-content: center;
+    overflow-y: auto; /* Disable horizontal scroll */
+}
+
+
+h1
+{
+    color: white;
+    margin-right: 20px;
+}
+h2
+{
+    color: #AAAAAA;
+}
+
+.hlist 
+{ 
+    display: flex;
+}
+
+.hlist li 
+{ 
+    list-style-type: none; 
+    display: inline; 
+}
+
+.favoritesTable
+{
+    display: table;
+    width: 50%;
+    margin: 0 auto;
+    font-size: 22pt;
+    color: #888888;
+}
+
+.messagesTable
+{
+    display: table;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 22pt;
+    color: #888888;
+}
+
+.messageContainer
+{
+    border-radius: 45px;
+    background-color: #DDDDDD;
+    color: #888888;
+    padding: 25px 25px 0px 25px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.feed
+{
+    margin-left: 20%;
+    width: 80%;
+    font-size: 16pt;
+}
+
+.messageCollumnLeft
+{
+    display:inline-block;
+    width: 10%;
+    padding: 20px;
+}
+
+.messageCollumnRight
+{
+    display:inline-block;
+    width:90%;
+    padding: 40px;
+}
