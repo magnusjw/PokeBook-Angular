@@ -1,30 +1,77 @@
-<div class="container jumbotron text-center">
-    <h1>USER REGISTRATION</h1>
-</div>
+<body class="poke-background">
+    <!--(ngSubmit)="register()"-->
+<form [formGroup]="form" (ngSubmit)="register()">
+    <div style="background-color: white; margin: 0px 20%;">
+        <div class="table" style="padding: 5% 0%">
 
+            <h1>Register</h1>
+            <br/><br/><br/>
 
-<form>
-    <div class="container login">
+            <ul class="hlist">
+                <li>
+                    <img src="../../../assets/person-icon.png" style="height: 65px"/>
+                </li>
+                <li>
+                    <input type="text" formControlName="username" class="form-control" placeholder="Enter Username"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }"> 
+                    <!--<div *ngIf="submitted && f.username.errors.required">User Name is Required</div>-->
+                </li>
+            </ul>
+            <br/><br/><br/>
+    
+            <ul class="hlist">
+                <li>
+                    <img src="../../../assets/password-icon.png" style="height: 65px"/>
+                </li>
+                <li>
+                    <input type="password" formControlName="password" class="form-control" placeholder="Enter Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"> 
+                    <!--<div *ngIf="submitted && f.password.errors.required">Password is Required</div>-->
+                </li>
+            </ul>
+            <br/><br/><br/>
+    
+            <ul class="hlist">
+                <li>
+                    <img src="../../../assets/name-icon.png" style="height: 65px"/>
+                </li>
+                <li>
+                    <input type="text" formControlName="firstName" class="form-control" placeholder="Enter Firstname" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"> 
+                    <!--<div *ngIf="submitted && f.firstname.errors.required">First Name is Required</div>-->
+                </li>
+            </ul>
+            <br/><br/><br/>
+    
+            <ul class="hlist">
+                <li>
+                    <img src="../../../assets/name-icon.png" style="height: 65px"/>
+                </li>
+                <li>
+                    <input type="text" formControlName="lastName" class="form-control" placeholder="Enter Lastname" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"> 
+                    <!--<div *ngIf="submitted && f.lastName.errors.required">Last Name is Required</div>-->
+                </li>
+            </ul>
+            <br/><br/><br/>
+    
+            <ul class="hlist">
+                <li>
+                    <img src="../../../assets/email-icon.png" style="height: 65px"/>
+                </li>
+                <li>
+                    <input type="text" formControlName="email" class="form-control" placeholder="Enter Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"> 
+                    <!--<div *ngIf="submitted && f.email.errors.required">Email is Required</div>-->
+                </li>
+            </ul>
+            <br/><br/><br/>
 
-        <div class="row" id="login-row">
-            <label class="col-sm-1"></label>
-            <input name="username" type="text" [(ngModel)]="username" class="col-sm-12 form-control" placeholder="Enter Username" required> 
-
-            <label class="col-sm-1"></label>
-            <input name="password" type="password" [(ngModel)]="password" class="col-sm-12 form-control" placeholder="Enter Password" required> 
-
-            <label class="col-sm-1"></label>
-            <input name="firstname" type="text" [(ngModel)]="firstname" class="col-sm-12 form-control" placeholder="Enter First name" required>
-
-            <label class="col-sm-1"></label>
-            <input name="lastname" type="text" [(ngModel)]="lastname" class="col-sm-12 form-control" placeholder="Enter Last Name" required>
-
-            <label class="col-sm-1"></label>
-            <input name="email" type="text" [(ngModel)]="email" class="col-sm-12 form-control" placeholder="Enter Email" required>
-
-
-            <button routerLink="../login" class="d-flex justify-content-center btn btn-dark" (click)="register()">Register</button>
+            <ul class="hlist">
+                <li style="padding: 0px 60px">
+                    <button class="d-flex justify-content-center btn btn-dark">Register</button>
+                    </li>
+                <li>
+                    <a routerLink="../login"><button class="d-flex justify-content-center btn btn-dark" >Cancel</button></a>
+                </li>
+            </ul>
         </div>
     </div>
-</form>
 
+</form>
+</body>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,23 +11,21 @@ export class NavBarComponent implements OnInit {
 
   input:any;
   success:boolean = false;
+  loggedInUser:User = null;
 
   constructor(
-
-    private router: Router,
-    private activatedRouter: ActivatedRoute
+    private router: Router
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
   }
 
   search(){
-    this.router.navigate(["../pokemon", this.input]);
-    console.log(this.input);
+    this.router.navigate(['../pokemon', this.input]);
   }
 
-  searchDiscussion(){
-    this.router.navigate(["../discussion", this.input]);
-    console.log(this.input);
+  clear(){
+    console.log("clearing");
+    document.getElementById("input").innerHTML ="15";
   }
 }

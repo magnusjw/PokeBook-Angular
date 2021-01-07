@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
+import { UserFeedComponent } from './components/user-feed/user-feed.component';
 
 const routes: Routes = [
   { path:'', component:LoginComponent },
@@ -17,12 +18,13 @@ const routes: Routes = [
   { path:'viewUser', component:ViewUserComponent },
   { path:'pokemon/:id', component:PokemonPageComponent },
   //View User Path
-  { path:'editUser', component:EditUserComponent }
-
+  { path:'editUser', component:EditUserComponent },
+  { path:'userFeed', component:UserFeedComponent },
+  { path:'viewUser', component:ViewUserComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

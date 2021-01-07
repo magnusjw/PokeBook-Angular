@@ -1,0 +1,25 @@
+<p>{{loggedInUser.username}}</p>
+<p>Favorites</p>
+<div *ngFor="let f of favorites">
+    <img [src]="f.src"/>
+    <p>{{f.name}}</p>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Author</th>
+            <th scope="col">PokemonId</th>
+            <th scope="col">Content</th>
+            <th scope="col">TimeStamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of messages">
+            <td>{{m.author.username}}</td>
+            <td>{{m.pokemonId}}</td>
+            <td>{{m.content}}</td>
+            <td>{{m.timeStamp}}</td>
+        </tr>
+    </tbody>
+</table>

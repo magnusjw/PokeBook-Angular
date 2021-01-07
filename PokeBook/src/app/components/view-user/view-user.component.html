@@ -1,14 +1,51 @@
-<p>Username: {{loggedInUser.username}}</p>
-<br/>
-
-<p>Password: {{loggedInUser.password}}</p>
-<br/>
-
-<p>First Name: {{loggedInUser.firstName}}</p>
-<br/>
-
-<p>Last Name: {{loggedInUser.lastName}}</p>
-<br/>
-
-<p>Email: {{loggedInUser.email}}</p>
-<br/>
+<body class="poke-background">
+    <div style="padding: 3% 0% 10% 0%">
+        <h1>View Account</h1>
+        <br/>
+        <img src="../../../assets/account-icon.png"/>
+        <p><a routerLink="../editUser">Edit</a></p>
+        <br/>
+        <div style="margin: 0px 10%; padding: 50px 15%; background-color: #F0F0F0; border-radius: 50px;">
+            <div class="row" style="padding: 0 0 20px 0;">
+                <div class="col">
+                    Username:
+                </div>
+                <div class="col">
+                    {{loggedInUser.username}}
+                </div>
+            </div>
+            <div class="row" style="padding: 0 0 20px 0;">
+                <div class="col">
+                    Password:
+                </div>
+                <div class="col">
+                    {{loggedInUser.password}}
+                </div>
+            </div>
+            <div class="row" style="padding: 0 0 20px 0;">
+                <div class="col">
+                    First Name:
+                </div>
+                <div class="col">
+                    {{loggedInUser.firstName}}
+                </div>
+            </div>
+            <div class="row" style="padding: 0 0 20px 0;">
+                <div class="col">
+                    Last Name:
+                </div>
+                <div class="col">
+                    {{loggedInUser.lastName}}
+                </div>
+            </div>
+            <div class="row" style="padding: 0 0 20px 0;">
+                <div class="col">
+                    Email:
+                </div>
+                <div class="col">
+                    {{loggedInUser.email}}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

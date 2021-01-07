@@ -1,20 +1,29 @@
-<div class="container jumbotron text-center">
-    <h1>USER SIGN IN</h1>
-</div>
-
-<div class="container login">
-
-    <div class="row" id="login-row">
-
-        <label for="username" class="col-sm-1"></label>
-        <input name="username" type="text" [(ngModel)]="username" class="col-sm-12 form-control" placeholder="Enter Username" required> 
-
-        <label for="password" class="col-sm-1"></label>
-        <input name="password" type="password" [(ngModel)]="password" class="col-sm-12 form-control" placeholder="Enter Password" required> 
-        
-        <br/><br/>
-        <button class="d-flex justify-content-center btn btn-dark" (click)="login()">Log In</button>
-        <a routerLink="../register" class="btn btn-link">Register</a>
-
+<body class="poke-background">
+    
+    <div class="container login" style="padding: 5% 0px 20% 0px;">
+        <h1>Login</h1>
+        <br/>
+        <br/>
+        <div id="login-row">
+            <label for="username"></label>
+            <input name="username" type="text" [(ngModel)]="username" class="col-sm-12 form-control" placeholder="Enter Username" required>
+            <br/>
+            <p style="font-size: 22pt;">Username</p>
+            <p style="font-size: 16pt;"><a routerLink="../register">Create Account</a></p>
+            <br/>
+    
+            <label for="password" ></label>
+            <input name="password" type="password" [(ngModel)]="password" class="col-sm-12 form-control" placeholder="Enter Password" required>
+            <br/>
+            <p style="font-size: 22pt;">Password</p>
+            <p style="font-size: 16pt;"><a routerLink="../register">Forgot Password</a></p>
+            
+            <br/><br/>
+            <button class="d-flex justify-content-center btn btn-dark" (click)="login()">
+                <img src="./../../../assets/pokeball-submit-button.png" style="height: 50px; padding: 5px;"/>
+                Log in
+            </button>
+    
+        </div>
     </div>
-</div>
+</body>

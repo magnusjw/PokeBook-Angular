@@ -36,7 +36,6 @@ export class AccountService { //Linked to the UserController in Java
   }
 
   logIn(user:User):Observable<User>{
-    console.log("login method")
     return this.http.put("http://localhost:8080/PokeBook/users/login", user, { withCredentials : true }) as Observable<User>;
   }
 

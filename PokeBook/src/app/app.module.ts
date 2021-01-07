@@ -5,15 +5,18 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+
 import { PokemonPageComponent } from './components/pokemon-page/pokemon-page.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { PoketypePipe } from './pipes/poketype.pipe';
+
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
+import { UserFeedComponent } from './components/user-feed/user-feed.component';
 
 @NgModule({
   declarations: [
@@ -25,15 +28,17 @@ import { ViewUserComponent } from './components/view-user/view-user.component';
     PokemonPageComponent,
     PoketypePipe,
     EditUserComponent,
-    ViewUserComponent
+    ViewUserComponent,
+    UserFeedComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
+    AppRoutingModule,    
     BrowserAnimationsModule,
-    HttpClientModule
-  ], //roam
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
