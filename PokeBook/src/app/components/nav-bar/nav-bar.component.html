@@ -9,14 +9,11 @@
         <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="user">User</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="pokemon">Pokemon</a>
+        <li>
+            <input id="input" type="text" [(ngModel)]="input" placeholder="Enter Pokemon ID"/>
         </li>
         <li>
-            <input id="input" #filterName type="text" [(ngModel)]="input"/>
-        </li>
-        <li>
-            <button class="btn btn-primary" (click)="search(); clear()">Search Pokemon</button>
+            <button class="btn btn-primary" (click)="search()">Search Pokemon</button>
         </li>
     </ul>
 </nav>

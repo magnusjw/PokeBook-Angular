@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+//import { DOCUMENT } from '@angular/common';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 
@@ -21,11 +22,9 @@ export class NavBarComponent implements OnInit {
   }
 
   search(){
-    this.router.navigate(['../pokemon', this.input]);
-  }
-
-  clear(){
-    console.log("clearing");
-    document.getElementById("input").innerHTML ="15";
+    if(this.input != ""){
+      this.router.navigate(['../pokemon', this.input]);
+      this.input = "";
+    }
   }
 }

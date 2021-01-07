@@ -51,6 +51,12 @@ export class RegisterComponent implements OnInit {
     this.submitted=true;
     let u:User = this.form.value;
     console.log(u)
+
+    if (this.form.invalid) {
+      console.log("Whoops Invalid Form")
+      return;
+  }
+
     this.as.createUser(u).subscribe(
       data => {
         console.log("Successfully Registered");
