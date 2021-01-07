@@ -75,7 +75,7 @@ export class PokemonPageComponent implements OnInit {
     );
 
     //Render PokemonAPI Information
-    this.getPoke(this.pokeInput);
+    this.getPoke(this.pokeInput); //Maybe get poke early on to answer the String input problem
 
   }
 
