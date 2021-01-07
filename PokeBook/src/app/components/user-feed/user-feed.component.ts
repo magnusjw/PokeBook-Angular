@@ -17,6 +17,8 @@ export class UserFeedComponent implements OnInit
   loggedInUser: User = new User(0, "", "", "", "", "");;
   favorites: Object[] = new Array(0);
   messages: Message[] = new Array(0);
+  msgImage: Object = { };
+  msgPkName: Object = { };
 
   constructor(private as:AccountService, private ps:PokemonService, private ms:MessageService, private fs:FollowService) { }
 
@@ -42,7 +44,7 @@ export class UserFeedComponent implements OnInit
     let favoritePokemonImageSources: Object[] = new Array(follows.length);
     for (let i : number = 0; i < follows.length; i++)
     {
-      let pokemon: Object = await this.ps.getPokemonFromApi(follows[i].pokemonId).toPromise();;
+      let pokemon: Object = await this.ps.getPokemonFromApi(follows[i].pokemonId).toPromise();
       favoritePokemonImageSources[i] = favoritePokemonImageSources[i] = { id : pokemon["id"], name : pokemon["name"], src: pokemon["sprites"]["front_default"]};
     }
     callback(favoritePokemonImageSources);
@@ -50,12 +52,27 @@ export class UserFeedComponent implements OnInit
 
   async getMessageForFeed(favorites : Object[], callback: { (favorites: Message[]): void })
   {
-    let messagesToMix : Message[][] = Array(favorites.length);
+    
+    let messagesToMix : Message[] = Array(0);
     for (let i : number = 0; i < favorites.length; i = i + 1)
     {
-      messagesToMix[i] = await this.ms.getMessagesByPokeId(favorites[i]["id"]).toPromise();
+      messagesToMix = messagesToMix.concat(await this.ms.getMessagesByPokeId(favorites[i]["id"]).toPromise());
     }
-    callback(this.mixArrays(messagesToMix));
+    //let result = this.mixArrays(messagesToMix);
+
+
+    //let result = await this.as.getMessagesById(this.loggedInUser.id).toPromise();
+    for (let message of messagesToMix)
+    {
+      if (message)
+      {
+        let pokemon: Object = await this.ps.getPokemonFromApi(message.pokemonId).toPromise();
+        this.msgImage[message.pokemonId] = pokemon["sprites"]["front_default"];
+        this.msgPkName[message.pokemonId] = pokemon["name"];
+        message["formattedDate"] = this.formatDate(new Date(message["messagePostTime"]));
+      }
+    }
+    callback(messagesToMix);
   }
 
 
@@ -72,5 +89,16 @@ export class UserFeedComponent implements OnInit
       }
     }
     return result;
+  }
+
+  capitalizeFirstLetter(string) : String
+  {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  formatDate(date)
+  {
+    const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return `${ months[date.getMonth()] }. ${ date.getDate() } ${ date.getFullYear() } ${ date.getHours() }:${ date.getMinutes() }`;
   }
 }

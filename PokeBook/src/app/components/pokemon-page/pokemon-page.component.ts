@@ -107,6 +107,7 @@ export class PokemonPageComponent implements OnInit {
 
           for (let i:number = 0;i<this.messages.length;i++) {
             let messageId = this.messages[i].id;
+            this.messages[i]["formattedDate"] = this.formatDate(new Date(this.messages[i]["messagePostTime"]));
             if (likesMessageIds.includes(messageId)) {
               this.messages[i].isLiked=true;
             }
@@ -179,5 +180,12 @@ export class PokemonPageComponent implements OnInit {
     });
     
     
+  }
+  capitalizeFirstLetter(string) : String
+  {
+    if (string && string.charAt(0))
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    else
+      return "";
   }
 }

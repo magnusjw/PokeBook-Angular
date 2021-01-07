@@ -33,7 +33,12 @@ input
 { 
     display: flex;
 }
-.hlist li { list-style-type: none; display: inline; }
+
+.hlist li 
+{ 
+    list-style-type: none; 
+    display: inline; 
+}
 
 .table 
 {
