@@ -1,0 +1,53 @@
+.poke-background 
+{
+    background-image: url("../../../assets/tiled-pokeball-background.png");
+    /*background-color: #cccccc;*/
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    align-content: center;
+}
+
+h1
+{
+    color: #AAAAAA;
+    text-align: center;
+}
+
+input
+{
+    height: 65px;
+    border-radius: 0px;
+    border: none;
+    width: 750px;
+    background-color: #E8E5E8;
+    color: #DB6066;
+    font-size: 22pt;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #DB6066;
+    opacity: 70%;
+  }
+
+.hlist 
+{ 
+    display: flex;
+}
+.hlist li { list-style-type: none; display: inline; }
+
+.table 
+{
+    display: table;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+button
+{
+    border: none;
+    border-radius: 0px;
+    background-color: #DB6066;
+    width: 300px;
+    height: 65px;
+    font-size: 22pt;
+}

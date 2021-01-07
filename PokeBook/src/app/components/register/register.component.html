@@ -1,41 +1,77 @@
-<div class="container jumbotron text-center">
-    <h1>USER REGISTRATION</h1>
-</div>
+<body class="poke-background">
+    <!--(ngSubmit)="register()"-->
+<form [formGroup]="form" (ngSubmit)="register()">
+    <div style="background-color: white; margin: 0px 20%;">
+        <div class="table" style="padding: 5% 0%">
 
-<!--(ngSubmit)="register()"-->
-<form [formGroup]="form" (ngSubmit)="register()" >
-    <div class="container login">
+            <h1>Register</h1>
+            <br/><br/><br/>
 
-        <div class="row" id="login-row">
-            <div class="form-group">
-                <!--<label for="username">User Name</label>-->
-                <input type="text" formControlName="username" class="form-control" placeholder="Enter Username"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }"> 
-                <!--<div *ngIf="submitted && f.username.errors.required">User Name is Required</div>-->
-            </div>
-            <div class="form-group">
-                <!--<label for="password">Password</label>-->
-                <input type="text" formControlName="password" class="form-control" placeholder="Enter Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"> 
-                <!--<div *ngIf="submitted && f.password.errors.required">Password is Required</div>-->
-            </div>
-            <div class="form-group">
-                <!--<label for="firstname">First Name</label>-->
-                <input type="text" formControlName="firstName" class="form-control" placeholder="Enter Firstname" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"> 
-                <!--<div *ngIf="submitted && f.firstname.errors.required">First Name is Required</div>-->
-            </div>
-            <div class="form-group">
-                <!--<label for="lastName">Last Name</label>-->
-                <input type="text" formControlName="lastName" class="form-control" placeholder="Enter Lastname" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"> 
-                <!--<div *ngIf="submitted && f.lastName.errors.required">Last Name is Required</div>-->
-            </div>
-            <div class="form-group">
-                <!--<label for="email">Email Name</label>-->
-                <input type="text" formControlName="email" class="form-control" placeholder="Enter Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"> 
-                <!--<div *ngIf="submitted && f.email.errors.required">Email is Required</div>-->
-            </div>
+            <ul class="hlist">
+                <li>
+                    <img src="../../../assets/person-icon.png" style="height: 65px"/>
+                </li>
+                <li>
+                    <input type="text" formControlName="username" class="form-control" placeholder="Enter Username"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }"> 
+                    <!--<div *ngIf="submitted && f.username.errors.required">User Name is Required</div>-->
+                </li>
+            </ul>
+            <br/><br/><br/>
+    
+            <ul class="hlist">
+                <li>
+                    <img src="../../../assets/password-icon.png" style="height: 65px"/>
+                </li>
+                <li>
+                    <input type="password" formControlName="password" class="form-control" placeholder="Enter Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"> 
+                    <!--<div *ngIf="submitted && f.password.errors.required">Password is Required</div>-->
+                </li>
+            </ul>
+            <br/><br/><br/>
+    
+            <ul class="hlist">
+                <li>
+                    <img src="../../../assets/name-icon.png" style="height: 65px"/>
+                </li>
+                <li>
+                    <input type="text" formControlName="firstName" class="form-control" placeholder="Enter Firstname" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"> 
+                    <!--<div *ngIf="submitted && f.firstname.errors.required">First Name is Required</div>-->
+                </li>
+            </ul>
+            <br/><br/><br/>
+    
+            <ul class="hlist">
+                <li>
+                    <img src="../../../assets/name-icon.png" style="height: 65px"/>
+                </li>
+                <li>
+                    <input type="text" formControlName="lastName" class="form-control" placeholder="Enter Lastname" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"> 
+                    <!--<div *ngIf="submitted && f.lastName.errors.required">Last Name is Required</div>-->
+                </li>
+            </ul>
+            <br/><br/><br/>
+    
+            <ul class="hlist">
+                <li>
+                    <img src="../../../assets/email-icon.png" style="height: 65px"/>
+                </li>
+                <li>
+                    <input type="text" formControlName="email" class="form-control" placeholder="Enter Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"> 
+                    <!--<div *ngIf="submitted && f.email.errors.required">Email is Required</div>-->
+                </li>
+            </ul>
+            <br/><br/><br/>
 
-            <button class="d-flex justify-content-center btn btn-dark">Register</button>
-            <a routerLink="../login" class="btn btn-link">Cancel</a>
+            <ul class="hlist">
+                <li style="padding: 0px 60px">
+                    <button class="d-flex justify-content-center btn btn-dark">Register</button>
+                    </li>
+                <li>
+                    <a routerLink="../login"><button class="d-flex justify-content-center btn btn-dark" >Cancel</button></a>
+                </li>
+            </ul>
         </div>
     </div>
-</form>
 
+</form>
+</body>
