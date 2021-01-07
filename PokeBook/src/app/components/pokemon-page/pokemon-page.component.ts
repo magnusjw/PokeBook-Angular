@@ -67,9 +67,9 @@ export class PokemonPageComponent implements OnInit {
 
     });
 
-    this.ms.getMessagesByPokeId(0).subscribe((response: Message[]) => {
+    //this.ms.getMessagesByPokeId(0).subscribe((response: Message[]) => {
 
-    });
+    //});
 
     //Render PokemonAPI Information
     this.getPoke(this.pokeInput);
