@@ -42,13 +42,13 @@ export class PokemonPageComponent implements OnInit {
   ngOnInit(){
     //Get the proper Page Values
     this.activatedRoute.paramMap.subscribe(params => {
-      this.pokeInput = Number(params.get('search'));
+      this.pokeInput = params.get('search');
     });
 
     //Get Current User
-    this.as.getLoggedInUser().subscribe((result: User) => 
+    this.as.getLoggedInUser().subscribe((userResult: User) => 
       {
-        this.loggedInUser= result;
+        this.loggedInUser= userResult;
 
         //Confirm if this page is being followed by this user
         let f:Follow = new Follow(0, this.loggedInUser, this.pokeInput);
@@ -110,9 +110,7 @@ export class PokemonPageComponent implements OnInit {
             if (likesMessageIds.includes(messageId)) {
               this.messages[i].isLiked=true;
             }
-            
           }
-          
         });
       }
     )

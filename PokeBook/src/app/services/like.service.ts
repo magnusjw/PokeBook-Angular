@@ -9,10 +9,7 @@ import { Like } from '../models/like.model';
 })
 export class LikeService {
   
-
   constructor(private http:HttpClient) { }
-
- 
 
   getLikes(id:number):Observable<Like[]>{
     return this.http.get<Like[]>("http://localhost:8080/PokeBook/likes/?user_id=" + id) as Observable<Like[]>;
