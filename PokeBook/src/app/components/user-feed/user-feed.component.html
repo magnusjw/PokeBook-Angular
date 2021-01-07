@@ -1,28 +1,3 @@
-<!--<p>{{loggedInUser.username}}</p>
-<p>Favorites</p>
-<div *ngFor="let f of favorites">
-    <img [src]="f.src"/>
-    <p>{{f.name}}</p>
-</div>
-
-<table>
-    <thead>
-        <tr>
-            <th scope="col">Author</th>
-            <th scope="col">PokemonId</th>
-            <th scope="col">Content</th>
-            <th scope="col">TimeStamp</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let m of messages">
-            <td>{{m.author.username}}</td>
-            <td>{{m.pokemonId}}</td>
-            <td>{{m.content}}</td>
-            <td>{{m.timeStamp}}</td>
-        </tr>
-    </tbody>
-</table>-->
 <div class="sidePanel">
     <!--<img src="../../../assets/rounded-corner.png" style="width: 60%; float: left;"/>-->
     <div style="margin-left: 20px;">
@@ -54,19 +29,6 @@
 </div>
 
 <div class="feed">
-    <!--<table class="messageTable">
-        <tr *ngFor="let m of messages" style="padding: 50px 0px; width: 100%; background-color: red;">
-            <td style="text-align: center;;">
-                <img [src]="msgImage[m.pokemonId]" style="transform: translate(0px, 20px)"/>
-                <p style="color: #999999; font-size: 14pt;">{{capitalizeFirstLetter(msgPkName[m.pokemonId])}}</p>
-            </td>
-            <td>
-                <div class="messageContainer">
-                    <p>{{m.content}}</p>
-                </div>
-            </td>
-        </tr>
-    </table>-->
     <div class="messagesTable">
         <div *ngFor="let m of messages" style="padding: 50px 0px; width: 100%; display:inline-block;">
             <div class="messageCollumnLeft">
@@ -82,25 +44,3 @@
         </div>
     </div>
 </div>
-<!--
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Author</th>
-                <th scope="col">PokemonId</th>
-                <th scope="col">Content</th>
-                <th scope="col">TimeStamp</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let m of messages">
-                <td><img [src]="msgImage[m.pokemonId]"/></td>
-                <td>{{m.author.username}}</td>
-                <td>{{m.pokemonId}}</td>
-                <td>{{m.content}}</td>
-                <td>{{m.timeStamp}}</td>
-            </tr>
-        </tbody>
-    </table>
--->
