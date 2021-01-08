@@ -63,7 +63,6 @@
 
 <div *ngIf="pokemon && pokeInput && loggedInUser && pokemon['types']" style="height: 100%">
 <div class="sidePanel">
-    Say {{message}}
     <!--<img src="../../../assets/rounded-corner.png" style="width: 60%; float: left;"/>-->
     <div style="margin-left: 20px;">
         <h1 style="display: inline-block;">{{capitalizeFirstLetter(pokemon["name"])}}</h1>
@@ -79,7 +78,7 @@
         </ul>
     </div>
 
-    <img src="{{pokemon['sprites']['other']['official-artwork']['front_default']}}" style="margin-top: -25%; width: 100%; padding: 20%; float: left; position: absolute;">
+    <img src="{{pokemon['sprites']['other']['official-artwork']['front_default']}}" style="margin-top: -25%; width: 100%; padding: 20%; float: left; position: absolute; pointer-events: none;">
     <div class="infoContainer">
         <br/>
         <h4>About</h4>

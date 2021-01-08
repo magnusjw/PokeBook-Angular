@@ -17,7 +17,6 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonPageComponent implements OnInit {
 
-  @Input() message:string;
   //Api Supports 898 Pokemon
   pokemon:Object = null;
   pokeInput:any;

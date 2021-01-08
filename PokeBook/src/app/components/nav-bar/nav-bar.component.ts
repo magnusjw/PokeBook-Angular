@@ -15,8 +15,6 @@ export class NavBarComponent implements OnInit {
   success:boolean = false;
   loggedInUser:User = null;
 
-  message:string = "Hello World";
-
   sendRequest:boolean = false;
 
   constructor(
