@@ -14,7 +14,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class UserFeedComponent implements OnInit 
 {
-  loggedInUser: User = new User(0, "", "", "", "", "");;
+  loggedInUser: User = new User(0, "", "", "", "", "");
   favorites: Object[] = new Array(0);
   messages: Message[] = new Array(0);
   msgImage: Object = { };
@@ -68,6 +68,7 @@ export class UserFeedComponent implements OnInit
       {
         let pokemon: Object = await this.ps.getPokemonFromApi(message.pokemonId).toPromise();
         this.msgImage[message.pokemonId] = pokemon["sprites"]["front_default"];
+        //this.msgPkName[message.pokemonId] = message.author.username;
         this.msgPkName[message.pokemonId] = pokemon["name"];
         message["formattedDate"] = this.formatDate(new Date(message["messagePostTime"]));
       }

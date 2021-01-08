@@ -44,6 +44,7 @@ export class PokemonPageComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(params => {
 
       this.pokeInput = params.get('search');
+
     });
 
     this.getPoke(this.pokeInput);
