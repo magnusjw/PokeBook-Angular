@@ -99,6 +99,15 @@ export class UserFeedComponent implements OnInit
   formatDate(date)
   {
     const months = ["Jan", "Feb", "Mar","Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    return `${ months[date.getMonth()] }. ${ date.getDate() } ${ date.getFullYear() } ${ date.getHours() }:${ date.getMinutes() }`;
+    let min = date.getMinutes()
+    let value:string;
+    if(min < 10){
+      value = "0" + min;
+    } else if(min == 10){
+      value = "10";
+    } else {
+      value = date.getMinutes();
+    }
+    return `${ months[date.getMonth()] }. ${ date.getDate() } ${ date.getFullYear() } ${ date.getHours() }:${ value }`;
   }
 }

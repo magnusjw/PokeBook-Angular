@@ -60,19 +60,20 @@ export class RegisterComponent implements OnInit {
       return;
   }
 
-    this.as.createUser(u).subscribe(
-      data => {
-        console.log("Successfully Registered");
-        document.getElementById("p_error").innerHTML = "";
-        document.getElementById("p_missing").innerHTML = "";
-        document.getElementById("p_success").innerHTML= "Successfully Registered!";
+  this.as.createUser(u).subscribe(
+    data => {
+      console.log("Successfully Registered");
+      document.getElementById("p_error").innerHTML = "";
+      document.getElementById("p_missing").innerHTML = "";
+      document.getElementById("p_success").innerHTML= "Successfully Registered!";
+      this.router.navigate(["../login"]);
 
-      },
-      error => {
-        console.log("Something went wrong");
-        document.getElementById("p_success").innerHTML = "";
-        document.getElementById("p_missing").innerHTML = "";
-        document.getElementById("p_error").innerHTML = "Registration Error.";
-      });
+    },
+    error => {
+      console.log("Something went wrong");
+      document.getElementById("p_success").innerHTML = "";
+      document.getElementById("p_missing").innerHTML = "";
+      document.getElementById("p_error").innerHTML = "Registration Error.";
+    });
   }
 }
