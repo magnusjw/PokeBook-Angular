@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Follow } from 'src/app/models/follow';
 import { Like } from 'src/app/models/like.model';
@@ -43,11 +43,8 @@ export class PokemonPageComponent implements OnInit {
   ngOnInit(){
     //Get the proper Page Values
     this.activatedRoute.paramMap.subscribe(params => {
-      if(params.get('search') == ""){
-        this.invalidInput = true;
-      } else {
-        this.pokeInput = params.get('search');
-      }
+
+      this.pokeInput = params.get('search');
     });
 
     this.getPoke(this.pokeInput);
@@ -56,20 +53,16 @@ export class PokemonPageComponent implements OnInit {
     this.as.getLoggedInUser().subscribe((userResult: User) => 
       {
         this.loggedInUser= userResult;
-        //Confirm if this page is being followed by this user
-        console.log("This is the problem isnt it")
+
         let f:Follow = new Follow(0, this.loggedInUser, this.pokemon["id"]);
-        console.log("I think so")
         this.fs.getFollow(f).subscribe((result: Follow) => {
+          
           this.currFollow = result;
-          console.log("Current Follow Object Below");
-          console.log(this.currFollow);
+
           if(result == null){
             this.isFollowed = false;
-            console.log("Page is Not Followed");
           } else {
             this.isFollowed = true;
-            console.log("Page is Followed");
           }
         },
         () => {
@@ -131,7 +124,7 @@ export class PokemonPageComponent implements OnInit {
       },
       ()=>{
         this.pokemon=null;
-        console.log("Something went wrong trying to catch your pokemon.");
+        this.router.navigate(["../userFeed"]);
       }
     )
     this.as.getLoggedInUser().subscribe((result: User) => 

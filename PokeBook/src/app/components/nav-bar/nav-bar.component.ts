@@ -15,6 +15,8 @@ export class NavBarComponent implements OnInit {
   success:boolean = false;
   loggedInUser:User = null;
 
+  error:boolean = false;
+
   sendRequest:boolean = false;
 
   constructor(
@@ -28,14 +30,17 @@ export class NavBarComponent implements OnInit {
   search(){
     console.log("Search occurred")
     if(this.input != ""){
-      this.router.navigate(['../pokemon', this.input]);
+      this.router.navigate(['../reroute', this.input]);
       this.input = "";
+      this.error = false;
+    } else {
+      console.log("Here")
+      this.error = true;
     }
   }
 
   logout(){
-    console.log("logout")
+    console.log("Logout")
     this.as.logout();
-    this.router.navigate(['../login']);
   }
 }

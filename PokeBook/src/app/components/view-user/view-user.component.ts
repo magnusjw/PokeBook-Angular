@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AccountService } from 'src/app/services/account.service';
 
@@ -11,7 +12,7 @@ export class ViewUserComponent implements OnInit
 {
   public loggedInUser : User;
 
-  constructor(private as: AccountService) 
+  constructor(private as: AccountService, private router:Router) 
   {
     this.loggedInUser = new User(0, "Loading...", "Loading...", "Loading...", "Loading...", "Loading...");
   }
@@ -25,6 +26,10 @@ export class ViewUserComponent implements OnInit
       this.loggedInUser.firstName = result.firstName;
       this.loggedInUser.lastName = result.lastName;
       this.loggedInUser.email = result.email;
+    },
+    ()=>{
+      console.log("You're not logged in! Intruder!");
+      this.router.navigate(["../login"]);
     });
   }
 

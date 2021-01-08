@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'src/app/services/account.service'
 import { User } from 'src/app/models/user'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-user',
@@ -11,7 +12,7 @@ import { User } from 'src/app/models/user'
 export class EditUserComponent implements OnInit 
 {
   public loggedInUser : User;
-  constructor(private as: AccountService) 
+  constructor(private as: AccountService, private router:Router) 
   {
     this.loggedInUser = new User(0, "Loading...", "Loading...", "Loading...", "Loading...", "Loading...");
   }
@@ -32,6 +33,7 @@ export class EditUserComponent implements OnInit
   {
     this.as.updateUser(this.loggedInUser).subscribe((response:User) => 
     {
+      this.router.navigate(['../viewUser']);
       console.log("Updated user");
     });
   }

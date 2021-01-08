@@ -1,6 +1,8 @@
 <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
-    <a class="nav-link" routerLinkActive="active" routerLink="login" style="margin-left: 20%;"><img src="../../../assets/title-icon.png" width="180" height="40"/></a>
+    <a class="nav-link" routerLinkActive="active" routerLink="userFeed" style="margin-left: 20%;"><img src="../../../assets/title-icon.png" width="180" height="40"/></a>
     <input id="input" type="text" [(ngModel)]="input" placeholder="Enter Pokemon ID" style="margin-left: 10%;"/>
     <button class="btn btn-primary" (click)="search()" style="margin-left: 1%;">Search Pokemon</button>
+    <p style="color:red" [hidden]="!error">Invalid Input</p>
     <a class="nav-link" routerLinkActive="active" routerLink="viewUser" style="margin-left: 19%;"><img src="../../../assets/account-icon.png" width="40" height="40"/></a>
+    <a class="nav-link" routerLinkActive="active" routerLink="login" (click)="logout()" style="margin-left: 21%;" width="40" height="40">Log Out</a>
 </nav>

@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ViewUserComponent } from './components/view-user/view-user.component';
 import { UserFeedComponent } from './components/user-feed/user-feed.component';
+import { RerouteComponent } from './components/reroute/reroute.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { UserFeedComponent } from './components/user-feed/user-feed.component';
     EditUserComponent,
     ViewUserComponent,
     UserFeedComponent,
+    RerouteComponent,
   ],
   imports: [
     BrowserModule,
