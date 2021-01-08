@@ -1,0 +1,22 @@
+input
+{
+    border-radius: 15px;
+    border: none;
+    background-color: #555555;
+    font-size: 14pt;
+    color: #CCCCCC;
+    padding: 0px 10px;
+}
+
+button
+{
+    border-radius: 15px;
+    font-size: 10pt;
+    background-color: #774444;
+    border: none;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #CCCCCC;
+    opacity: 70%;
+  }
