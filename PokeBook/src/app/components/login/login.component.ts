@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.loginSuccess = true;
         console.log("Login Successful!")
 
-        this.router.navigate(["../user"]);
+        this.router.navigate(["../userFeed"]);
       },
       ()=>{
         this.error = true;

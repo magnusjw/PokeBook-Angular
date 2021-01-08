@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Follow } from 'src/app/models/follow';
 import { Like } from 'src/app/models/like.model';
@@ -17,12 +17,14 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 })
 export class PokemonPageComponent implements OnInit {
 
+  @Input() message:string;
   //Api Supports 898 Pokemon
   pokemon:Object = null;
   pokeInput:any;
   loggedInUser: User;
   isFollowed:boolean;
   currFollow:Follow;
+  invalidInput:boolean = false;
 
   messages:Message[];
   content:string;
@@ -42,17 +44,23 @@ export class PokemonPageComponent implements OnInit {
   ngOnInit(){
     //Get the proper Page Values
     this.activatedRoute.paramMap.subscribe(params => {
-      this.pokeInput = params.get('search');
+      if(params.get('search') == ""){
+        this.invalidInput = true;
+      } else {
+        this.pokeInput = params.get('search');
+      }
     });
+
+    this.getPoke(this.pokeInput);
 
     //Get Current User
     this.as.getLoggedInUser().subscribe((userResult: User) => 
       {
         this.loggedInUser= userResult;
-
         //Confirm if this page is being followed by this user
-        let f:Follow = new Follow(0, this.loggedInUser, this.pokeInput);
-
+        console.log("This is the problem isnt it")
+        let f:Follow = new Follow(0, this.loggedInUser, this.pokemon["id"]);
+        console.log("I think so")
         this.fs.getFollow(f).subscribe((result: Follow) => {
           this.currFollow = result;
           console.log("Current Follow Object Below");
@@ -69,13 +77,12 @@ export class PokemonPageComponent implements OnInit {
           console.log("You're not logged in! Intruder!");
           this.router.navigate(["../login"]);
         }
-
+       
         );
       },
     );
-
     //Render PokemonAPI Information
-    this.getPoke(this.pokeInput); //Maybe get poke early on to answer the String input problem
+     //Maybe get poke early on to answer the String input problem
 
   }
 
