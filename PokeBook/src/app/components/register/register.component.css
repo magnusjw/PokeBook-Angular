@@ -51,3 +51,12 @@ button
     height: 65px;
     font-size: 22pt;
 }
+
+p {
+    color: #DB6066;
+    font-size: 22pt;
+    text-align:center;
+    margin-top:5%;
+    margin-right:15%;
+
+}
