@@ -8,7 +8,6 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 import { PokemonPageComponent } from './components/pokemon-page/pokemon-page.component';
 import { RegisterComponent } from './components/register/register.component';
-import { UserComponent } from './components/user/user.component';
 import { PoketypePipe } from './pipes/poketype.pipe';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -25,7 +24,6 @@ import { UserFeedComponent } from './components/user-feed/user-feed.component';
     NavBarComponent,
     LoginComponent,
     RegisterComponent,
-    UserComponent,
     PokemonPageComponent,
     PoketypePipe,
     EditUserComponent,
