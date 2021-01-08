@@ -11,11 +11,11 @@ export class MessageService {
   constructor(private http:HttpClient) { }
 
   createMessage(message:Message){
-    return this.http.post("http://localhost:8080/PokeBook/messages", message);
+    return this.http.post("http://3.129.68.42:8080/PokeBook/messages", message);
   }
 
   getMessagesByPokeId(id:number):Observable<Message[]>{
-    return this.http.get<Message[]>("http://localhost:8080/PokeBook/messages/?pokemon_id=" + id) as Observable<Message[]>; //Have MessageController Getmapping 
+    return this.http.get<Message[]>("http://3.129.68.42:8080/PokeBook/messages/?pokemon_id=" + id) as Observable<Message[]>; //Have MessageController Getmapping 
   }
   
 }

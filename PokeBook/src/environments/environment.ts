@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://3.129.68.42:8080/PokeBook/'
   // "jdbc:postgresql://javafs201130.c5srn7vdmkt3.us-east-2.rds.amazonaws.com:5432/postgres"
 };
 

@@ -12,12 +12,6 @@ import { AccountService } from 'src/app/services/account.service';
 export class NavBarComponent implements OnInit {
 
   input:any;
-  success:boolean = false;
-  loggedInUser:User = null;
-
-  error:boolean = false;
-
-  sendRequest:boolean = false;
 
   constructor(
     private router: Router,
@@ -32,10 +26,8 @@ export class NavBarComponent implements OnInit {
     if(this.input != ""){
       this.router.navigate(['../reroute', this.input]);
       this.input = "";
-      this.error = false;
     } else {
-      console.log("Here")
-      this.error = true;
+      console.log("Empty Input")
     }
   }
 

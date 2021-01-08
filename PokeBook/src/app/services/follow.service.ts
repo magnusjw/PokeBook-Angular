@@ -11,20 +11,20 @@ export class FollowService {
   constructor(private http:HttpClient) { }
 
   getFollow(f:Follow){
-    return this.http.patch<Follow>("http://localhost:8080/PokeBook/follows", f) as Observable<Follow>;
+    return this.http.patch<Follow>("http://3.129.68.42:8080/PokeBook/follows", f) as Observable<Follow>;
   }
   
   getFollowsByUserId(id:number):Observable<Follow[]>{
-    return this.http.get<Follow[]>("http://localhost:8080/PokeBook/follows/?user_id=" + id) as Observable<Follow[]>; //Have MessageController Getmapping 
+    return this.http.get<Follow[]>("http://3.129.68.42:8080/PokeBook/follows/?user_id=" + id) as Observable<Follow[]>; //Have MessageController Getmapping 
   }
 
   createFollow(f:Follow):Observable<Follow>{
     console.log("Follow Created by user " + f.user.id + " for pokeId " + f.pokemonId);
-    return this.http.post<Follow>("http://localhost:8080/PokeBook/follows", f) as Observable<Follow>;
+    return this.http.post<Follow>("http://3.129.68.42:8080/PokeBook/follows", f) as Observable<Follow>;
   }
 
   deleteFollow(f:Follow){
     console.log("Follow id: " + f.id);
-    return this.http.delete("http://localhost:8080/PokeBook/follows/" + f.id);
+    return this.http.delete("http://3.129.68.42:8080/PokeBook/follows/" + f.id);
   }
 }
