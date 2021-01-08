@@ -53,16 +53,26 @@ export class RegisterComponent implements OnInit {
     console.log(u)
 
     if (this.form.invalid) {
-      console.log("Whoops Invalid Form")
+      console.log("Whoops Invalid Form");
+      document.getElementById("p_success").innerHTML = "";
+      document.getElementById("p_error").innerHTML = "";
+      document.getElementById("p_missing").innerHTML= "Missing Fields!";
       return;
   }
 
     this.as.createUser(u).subscribe(
       data => {
         console.log("Successfully Registered");
+        document.getElementById("p_error").innerHTML = "";
+        document.getElementById("p_missing").innerHTML = "";
+        document.getElementById("p_success").innerHTML= "Successfully Registered!";
+
       },
       error => {
         console.log("Something went wrong");
+        document.getElementById("p_success").innerHTML = "";
+        document.getElementById("p_missing").innerHTML = "";
+        document.getElementById("p_error").innerHTML = "Registration Error.";
       });
   }
 }
