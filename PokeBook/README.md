@@ -3,8 +3,8 @@
 A social networking application for Pokemon!
 
 ## Technologies Used
-Angular - Version 11
-Spring MVC
+Angular - Version 11   
+Spring MVC  
 PostgreSQL database hosted on a RDS on an EC2
 
 ## Features
