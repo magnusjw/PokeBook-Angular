@@ -21,7 +21,8 @@ Posting on a user page
 Comments on the discussion board  
 
 ## Getting Started
-git clone https://github.com/magnusjw/PokeBook-Angular
+git clone https://github.com/magnusjw/PokeBook-Angular  
+git clone https://github.com/AlexanderSwain1/PokeBook-Java/
 
 ## Usage
 Users must register for the PokeBook Application on the registration page. 
