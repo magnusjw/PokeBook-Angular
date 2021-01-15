@@ -29,6 +29,6 @@ Then, they must login on the home page (login page). All of the application's
 functionality will then be open after logging in.
 
 ## Contributors
-Gabriel Fendt
-John Magnuson
-Alexander Swain
+Gabriel Fendt  
+John Magnuson  
+Alexander Swain  
