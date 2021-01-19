@@ -8,6 +8,8 @@ import { ViewUserComponent } from './components/view-user/view-user.component';
 import { UserFeedComponent } from './components/user-feed/user-feed.component';
 import { RerouteComponent } from './components/reroute/reroute.component';
 
+//http://localhost:8080/pokemon/15
+
 const routes: Routes = [
   { path:'', component:LoginComponent },
   { path:'login', component:LoginComponent },
